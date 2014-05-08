@@ -1,3 +1,9 @@
+/***********************************************************************
+Program Name: ShowEscapeSequences.java
+Programmer's Name: Craig Gleckman
+Program Description: using one print statement produce an output that
+	spans multiple lines and has a tabbed third line
+***********************************************************************/
 package ses;
 
 public class ShowEscapeSequences

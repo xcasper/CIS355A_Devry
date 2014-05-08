@@ -1,3 +1,9 @@
+/***********************************************************************
+Program Name: Circle.java
+Programmer's Name: Craig Gleckman
+Program Description: take a user inputed radius and then produce the
+ 			diameter, circumference, and area of the circle.
+***********************************************************************/
 package circ;
 
 import javax.swing.JOptionPane;

@@ -1,3 +1,9 @@
+/***********************************************************************
+Program Name: PracticeArithmeticOperators.java
+Programmer's Name: Craig Gleckman
+Program Description: take 2 user inputed numbers and then return the 
+	sum, difference, product, and quotient of those numbers.
+***********************************************************************/
 package pao;
 
 import javax.swing.JOptionPane;
