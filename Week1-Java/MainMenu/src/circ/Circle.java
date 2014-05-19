@@ -12,6 +12,11 @@ public class Circle
 {
 	public static void main(String[] args)
 	{
+		run();
+	}//end main
+	
+	public static void run(){
+		
 		String input = null; // radius input from user
 		int radius, diameter; //radius: users input converted to int | diameter: radius * 2
 		double circumference, area; // circumference: 2 * radius * PI | area: PI * radius * radius
@@ -34,6 +39,6 @@ public class Circle
 				"Results", JOptionPane.PLAIN_MESSAGE);
 		
 		System.exit(0); //terminate application
-	}//end main
+	}//end run
 
 }//end Circle class

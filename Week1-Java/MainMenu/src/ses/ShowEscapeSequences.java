@@ -10,9 +10,14 @@ public class ShowEscapeSequences
 {
 	public static void main(String[] args)
 	{
+		run();
+	}//end main
+	
+	public static void run(){
+		
 		//output the given print message using proper escape sequences
 		System.out.print("I really like\nCIS335A\n\t\"Business Application Programming with Lab using JAVA\"");
 
-	}//end main
+	}//end run
 	
 }//end ShowEscapeSequences

@@ -13,6 +13,11 @@ public class PracticeArithmeticOperators
 {
 	public static void main(String[] args) 
 	{
+		run();
+	}//end main
+	
+	public static void run(){
+		
 		String inputNum1, inputNum2; //store users two numbers
 		int num1, num2; //converted input numbers from String to int
 		int sum, difference, product; //sum: num1 + num2 | difference: num1 - num2 | product: num1 * num2
@@ -46,6 +51,6 @@ public class PracticeArithmeticOperators
 		JOptionPane.showMessageDialog(null, output, "Output", JOptionPane.PLAIN_MESSAGE);
 		
 		System.exit(0); //terminate application
-	}//end main
+	}//end run
 
 }//end PracticeArithmeticOperators
