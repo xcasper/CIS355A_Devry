@@ -3,16 +3,13 @@ Program Name: MainMenu.java
 Programmer's Name: Craig Gleckman
 Program Description: Allows the user to click a button and opens the corresponding program
 ***********************************************************************/
-package mm;
+package Week1;
 
 //Import the custom classes
-import circ.Circle;
-import pao.PracticeArithmeticOperators;
-import ses.ShowEscapeSequences;
-
 import javax.swing.JOptionPane;
 
-public class MainMenu {
+public class Menu {
+	@SuppressWarnings("static-access")
 	public static void main(String[] args){
 		//Create a object array to house the possible options the user will have (1 button is created per item in the array)
 		Object[] options = {"Escape Sequences", "Circle Calculator", "Arithmetic Operators"};
@@ -47,5 +44,4 @@ public class MainMenu {
 				break;		
 		}//end switch
 	}//end main
-
 }//end MainMenu
