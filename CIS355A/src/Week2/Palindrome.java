@@ -3,12 +3,8 @@ package Week2;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Palindrome {
-
-	public static void main(String[] args)
-	{
-		run();
-	}
+public class Palindrome 
+{
 	//Created run method in order to get overall menu to successfully work. Had issues getting it to run with only a main method.
 	public static void run()
 	{		
@@ -50,6 +46,7 @@ public class Palindrome {
 			palidrome = false;
 			System.out.println("The entered number is NOT a palidrome.");
 		}
+		scan.close();
 		
 	}
 }

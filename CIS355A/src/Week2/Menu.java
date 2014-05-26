@@ -44,7 +44,7 @@ public class Menu
                 break;
             case 2: 
             	Grade grade = new Grade();
-                //grade.run();
+                grade.run();
                 break;
             default:
                 System.out.println("The option you selected is apparently broken!!! Good Bye!");

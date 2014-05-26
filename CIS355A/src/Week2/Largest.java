@@ -6,10 +6,6 @@ import java.io.InputStreamReader;
 
 public class Largest 
 {
-	public static void main(String[] args)
-	{
-		run();
-	}
 	//Created run method in order to get overall menu to successfully work. Had issues getting it to run with only a main method.
 	public static void run()
 	{		
