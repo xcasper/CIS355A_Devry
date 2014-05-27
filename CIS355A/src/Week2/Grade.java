@@ -33,18 +33,17 @@ public class Grade
 				//get Input
 				gradeInput = JOptionPane.showInputDialog("Please enter grade #" + (counter+1) + ": ");
 				errorExist = ec.IntParseChecker(gradeInput);//Check to see if input is Int Parseable
-				System.out.println("ErrorExist error?:" + errorExist);
+				
 				if(!errorExist)
 				{
 					grade = Integer.parseInt(gradeInput);//convert input to int
 					errorExist = ec.RangeChecker(grade, 0, 100);//check to see if input is between 0 and 100
-				}
-				
-				if(!errorExist)
-				{
-					accGrades += grade;
-					System.out.println("accGrades addition ran");
-				}
+					
+					if(!errorExist)
+					{
+						accGrades += grade;
+					}//end if
+				}//end if
 			}while(errorExist); //end do-while
 		}//end for		
 		return accGrades;
@@ -55,7 +54,6 @@ public class Grade
 	{
 		//divide accumulated grades by 5(# of grades) to get average
 		double avgGrade = accGrades / 5.0;
-		System.out.println("AccGrades: " + accGrades + "AvgGrade: " + avgGrade);
 		return avgGrade;
 	}//end getStudentGradeAverage
 	
@@ -102,7 +100,6 @@ public class Grade
 		//Declare local variables and initialize them with returned values
 		String stuName = getStudentName();
 		int accumulatedGrades = getStudentGrades();
-		System.out.println(accumulatedGrades);
 		double averageGrade = determineStudentGradeAverage(accumulatedGrades);
 		char letterGrade = determineLetterGrade(averageGrade);
 		

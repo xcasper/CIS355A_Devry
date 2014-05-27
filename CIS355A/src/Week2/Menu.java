@@ -1,7 +1,7 @@
 /***********************************************************************
-1Program Name: Menu.java
+Program Name: Menu.java
 Programmer's Name: Craig Gleckman
-Program Description: Allows the user to click a button and opens the corresponding program
+Program Description: Main menu for CIS355A week2. Allows the user to click a button and test the corresponding program.
 ***********************************************************************/
 package Week2;
   
@@ -51,4 +51,4 @@ public class Menu
                 break;      
         }//end switch
     }//end main
-}//end MainMenu 
+}//end Menu 
