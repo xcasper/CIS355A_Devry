@@ -25,7 +25,7 @@ public class ErrorChecker
 		catch(NumberFormatException ne)
 		{
 			errorFlag = true;
-			JOptionPane.showMessageDialog(null, "Error: parse error", "Error", JOptionPane.PLAIN_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Error: parse error", "Error", JOptionPane.ERROR);
 		}	
 		//returns if the string was able to be converted to int. True = yes. False = no.
 		return errorFlag;
@@ -41,10 +41,24 @@ public class ErrorChecker
 		if(temp < low || temp > high)
 		{
 			errorFlag = true;
-			JOptionPane.showMessageDialog(null, "Error: Value Not In Range", "Error", JOptionPane.PLAIN_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Error: Value Not In Range", "Error", JOptionPane.ERROR);
 		}
 		
 		//returns if the string was able to be converted to int. True = yes. False = no.
 		return errorFlag;
 	}//end RangeChecker
+	
+	//Checks for whitespace only (such as if someone put only spaces.
+	//checks if the field is null(such as if the user doesnt enter anything)
+	public boolean NullorEmpty(String value)
+	{
+		boolean errorFlag = false;
+		
+		if(value == null || value.trim().length() == 0)
+		{
+			errorFlag = true;
+			JOptionPane.showMessageDialog(null, "Error: Input is NULL or Empty", "Error", JOptionPane.ERROR);
+		}//end if
+		return errorFlag;
+	}//end NullorWhiteSpaceChecker
 }//end ErrorChecker
