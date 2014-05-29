@@ -1,3 +1,9 @@
+/***********************************************************************
+Program Name: Menu.java
+Programmer's Name: Craig Gleckman
+Program Description: Grade class for CIS355A week2. Asks the user for a studnets name, 5 grades, and 
+				then determines the average and letter grade associated with that average
+***********************************************************************/
 package Week2;
 
 import javax.swing.*;

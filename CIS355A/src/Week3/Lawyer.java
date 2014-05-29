@@ -1,3 +1,15 @@
+/***********************************************************************
+Program Name: Lawyer.java
+Programmer's Name: Craig Gleckman
+Program Description: Lawyer for CIS355A week3. Prompts the user with a main menu.
+				1: Asks the user for client information such as name, phone number, address, etc.
+				Also asks the user for the amount of time spent with the lawyer, the hourly rate, 
+				and what the client did wrong.
+				2: Displays the gathered client information
+				3: Not available
+				4: Not available
+				5: Exit program
+***********************************************************************/
 package Week3;
 
 import javax.swing.JOptionPane;
