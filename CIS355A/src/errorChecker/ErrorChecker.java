@@ -47,6 +47,7 @@ public class ErrorChecker
 			errorFlag = true;
 			JOptionPane.showMessageDialog(null, "Error: Double parse error", "Error", JOptionPane.ERROR_MESSAGE);
 		}	
+		
 		//returns if the string was able to be converted to int. True = yes. False = no.
 		return errorFlag;
 	}//end DoubleParseChecker
@@ -63,7 +64,7 @@ public class ErrorChecker
 			errorFlag = true;
 			System.out.println("RangeChecker ran. errorFlag = " + errorFlag);
 			JOptionPane.showMessageDialog(null, "Error: Value Not In Range", "Error", JOptionPane.ERROR_MESSAGE);
-		}
+		}//end if
 		
 		//returns if the string was able to be converted to int. True = yes. False = no.
 		return errorFlag;
@@ -79,9 +80,9 @@ public class ErrorChecker
 		{
 			errorFlag = true;
 			JOptionPane.showMessageDialog(null, "Error: Value Not In Range", "Error", JOptionPane.ERROR_MESSAGE);
-		}
+		}//end if
 		
-		//returns if the string was able to be converted to int. True = yes. False = no.
+		//returns if the number was between the low and high. True = yes. False = no.
 		return errorFlag;
 	}//end RangeChecker
 	
@@ -95,16 +96,16 @@ public class ErrorChecker
 			errorFlag = true;
 			JOptionPane.showMessageDialog(null, "Error: You cannot check Min and Max in HighLowRangeChecker\n"
 					+ "Please use RangeChecker(int, int, int)", "Error", JOptionPane.ERROR_MESSAGE);
-		}
-		//Check to see if the number is below the low
+		}//end if
 		else if(checkMin == true)
 		{
+			//Check to see if the number is below the low
 			if(temp < num)
 			{
 				errorFlag = true;
 				JOptionPane.showMessageDialog(null, "Error: Value Not In Range", "Error", JOptionPane.ERROR_MESSAGE);
 			}
-		}
+		}//end else if
 		
 		else if(checkMax == true)
 		{
@@ -114,13 +115,14 @@ public class ErrorChecker
 				errorFlag = true;
 				JOptionPane.showMessageDialog(null, "Error: Value Not In Range", "Error", JOptionPane.ERROR_MESSAGE);
 			}
-		}
+		}//end else if
 		else
 		{
 			errorFlag = true;
 			JOptionPane.showMessageDialog(null, "Error: Unforseen ERROR in RangeChecker", "Error", JOptionPane.ERROR_MESSAGE);
-		}
+		}//end else
 		
+		//returns if the number was below the low or above the high. True = yes. False = no.
 		return errorFlag;
 	}//end HighLowRangeChecker
 	
@@ -134,17 +136,16 @@ public class ErrorChecker
 			errorFlag = true;
 			JOptionPane.showMessageDialog(null, "Error: You cannot check Min and Max in HighLowRangeChecker\n"
 					+ "Please use RangeChecker(int, int, int)", "Error", JOptionPane.ERROR_MESSAGE);
-		}
-		//Check to see if the number is below the low
+		}//end if
 		else if(checkMin == true)
 		{
+			//Check to see if the number is below the low
 			if(temp < num)
 			{
 				errorFlag = true;
 				JOptionPane.showMessageDialog(null, "Error: Value Not In Range", "Error", JOptionPane.ERROR_MESSAGE);
 			}
-		}
-		
+		}//end else if
 		else if(checkMax == true)
 		{
 			//Check to see if the number is above the high
@@ -153,13 +154,14 @@ public class ErrorChecker
 				errorFlag = true;
 				JOptionPane.showMessageDialog(null, "Error: Value Not In Range", "Error", JOptionPane.ERROR_MESSAGE);
 			}
-		}
+		}//end else if
 		else
 		{
 			errorFlag = true;
 			JOptionPane.showMessageDialog(null, "Error: Unforseen ERROR in RangeChecker", "Error", JOptionPane.ERROR_MESSAGE);
-		}
+		}//end else
 		
+		//returns if the number was below the low or above the high. True = yes. False = no.
 		return errorFlag;
 	}//end HighLowRangeChecker
 	
@@ -168,6 +170,7 @@ public class ErrorChecker
 	//checks if the field is null(such as if the user doesnt enter anything)
 	public boolean NullorEmpty(String value)
 	{
+		//Declare local variables
 		boolean errorFlag = false;
 		
 		if(value == null || value.trim().length() == 0)
@@ -175,6 +178,8 @@ public class ErrorChecker
 			errorFlag = true;
 			JOptionPane.showMessageDialog(null, "Error: Input is NULL or Empty", "Error", JOptionPane.ERROR_MESSAGE);
 		}//end if
+		
+		//Returns whether or not the string was empty, or had white spaces, or not. True = yes. False = no.
 		return errorFlag;
 	}//end NullorWhiteSpaceChecker
 }//end ErrorChecker
