@@ -14,7 +14,6 @@ import javax.swing.JOptionPane;
   
 public class Menu
 {
-    @SuppressWarnings("static-access")
 	public static void main(String[] args) throws IOException
     {
         //Create a object array to house the possible options the user will have (1 button is created per item in the array)
