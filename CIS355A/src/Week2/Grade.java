@@ -7,7 +7,8 @@ Program Description: Grade class for CIS355A week2. Asks the user for a studnets
 package Week2;
 
 import javax.swing.*;
-import errorChecker.ErrorChecker;//Custom error checking class
+
+import ErrorChecker.ErrorChecker;
 
 public class Grade
 {

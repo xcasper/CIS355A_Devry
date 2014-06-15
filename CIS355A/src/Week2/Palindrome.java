@@ -12,7 +12,8 @@ Program Description: Allows the user to input a 5 digit number and then
 package Week2;
 
 import java.util.Scanner;
-import errorChecker.ErrorChecker;
+
+import ErrorChecker.ErrorChecker;
 
 public class Palindrome 
 {

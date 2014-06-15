@@ -4,7 +4,7 @@ Programmer's Name: Craig Gleckman
 Program Description: Error Checking package that will be updated throughout the class
 				and separated in order to be reusable and not bog down the programs.
 ***********************************************************************/
-package errorChecker;
+package ErrorChecker;
 
 import javax.swing.JOptionPane;
 

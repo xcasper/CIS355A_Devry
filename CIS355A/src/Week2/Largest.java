@@ -9,7 +9,8 @@ package Week2;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import errorChecker.ErrorChecker;
+
+import ErrorChecker.ErrorChecker;
 
 public class Largest 
 {
