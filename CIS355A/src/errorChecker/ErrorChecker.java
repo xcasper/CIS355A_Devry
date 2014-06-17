@@ -53,13 +53,13 @@ public class ErrorChecker
 	}//end DoubleParseChecker
 	
 	//Check range of a number is between the low and high
-	public boolean RangeChecker(int temp, int low, int high)
+	public boolean RangeChecker(int comparisonNum, int low, int high)
 	{
 		//Declare local variables
 		boolean errorFlag = false;
 		
 		//Check to see if the number is between low and high
-		if(temp < low || temp > high)
+		if(comparisonNum < low || comparisonNum > high)
 		{
 			errorFlag = true;
 			System.out.println("RangeChecker ran. errorFlag = " + errorFlag);
@@ -70,13 +70,13 @@ public class ErrorChecker
 		return errorFlag;
 	}//end RangeChecker
 	
-	public boolean RangeChecker(double temp, double low, double high)
+	public boolean RangeChecker(double comparisonNum, double low, double high)
 	{
 		//Declare local variables
 		boolean errorFlag = false;
 		
 		//Check to see if the number is between low and high
-		if(temp < low || temp > high)
+		if(comparisonNum < low || comparisonNum > high)
 		{
 			errorFlag = true;
 			JOptionPane.showMessageDialog(null, "Error: Value Not In Range", "Error", JOptionPane.ERROR_MESSAGE);
