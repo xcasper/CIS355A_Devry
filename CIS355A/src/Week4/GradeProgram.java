@@ -1,132 +1,98 @@
 package Week4;
 
-import java.awt.Container;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.text.DecimalFormat;
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
 
-import javax.swing.BoxLayout;
-import javax.swing.GroupLayout;
-import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.JButton;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 import ErrorChecker.ErrorChecker;
 
-public class GradeProgram  extends JFrame
-{
-		private JFrame mainFrame;
-		private JButton btnScore, btnCalculate, btnClear, btnExit;
-		private JTextField fldStuName, fldStuID, fldScores;
-		private JLabel lblStuName, lblStuID, lblScores;
-		private int numScoresEntered;
-		private double scores;
-		private char letterGrade;
-		private boolean errorExist = true;
-		private ErrorChecker ec = new ErrorChecker();
-		
-		
-		//Class constructor method
-		public GradeProgram()
-		{
-			//Define objects in constructor
-			mainFrame = new JFrame("Grade Program");
-			
-			//Initialize buttons
-			btnScore = new JButton("Score Button");
-			btnCalculate = new JButton("Calculate");
-			btnClear = new JButton("Clear");
-			btnExit= new JButton("Exit");
-			
-			//Initialize labels
-			lblStuName = new JLabel("Enter Student's Name: ");
-			lblStuID = new JLabel("Enter Student's ID: ");
-			lblScores = new JLabel("Enter Scores: ");
-			
-			//Initialize Fields
-			fldStuName = new JTextField(30);
-			fldStuID = new JTextField(30);
-			fldScores = new JTextField(30);
-			
-			//Get a container for the frame
-			Container c = mainFrame.getContentPane();
-			//Set the layout of the container
-			c.setLayout(new FlowLayout());
-			
-			//Add components to the container
-			c.add(lblStuName);
-			c.add(fldStuName);
-			c.add(lblStuID);
-			c.add(fldStuID);
-			c.add(lblScores);
-			c.add(fldScores);
-			c.add(btnScore);
-			c.add(btnCalculate);
-			c.add(btnClear);
-			c.add(btnExit);
-			
-			//Set the mnemonic for each button
-			btnScore.setMnemonic('S');
-			btnCalculate.setMnemonic('C');
-			btnClear.setMnemonic('R');
-			btnExit.setMnemonic('X');
-			
-			//Set the size of the GUI frame
-			mainFrame.setSize(500, 400);
-			
-			//Make sure you terminate the program when the application is closed
-			mainFrame.addWindowListener(new WindowAdapter(){
-				public void windowClosing(WindowEvent e){
-					System.exit(0);
+public class GradeProgram extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField fldStuName;
+	private JTextField fldStuID;
+	private JTextField fldScores;
+	private boolean errorExist;
+	private double scores;
+	private double amtScoresEntered;
+	private String studentName;
+	private int studentID;
+	private ErrorChecker ec = new ErrorChecker();
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					GradeProgram frame = new GradeProgram();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
-			});
-			
-			//Add action listener to each button
-			//calculateButtonHandler is a class that is defined below
-			ScoreButtonHandler shandler = new ScoreButtonHandler();
-			btnScore.addActionListener(shandler);
-			
-			//calculateButtonHandler is a class that is defined below
-			CalculateButtonHandler chandler = new CalculateButtonHandler();
-			btnCalculate.addActionListener(chandler);
-			
-			//ClearButtonHandler is a class that is defined below
-			ClearButtonHandler clrhandler = new ClearButtonHandler();
-			btnClear.addActionListener(clrhandler);
-			
-			//ExitButtonHandler is a class that is defined below
-			ExitButtonHandler ehandler = new ExitButtonHandler();
-			btnExit.addActionListener(ehandler);
-			
-			//FocusHandler is a class that is defined below
-			FocusHandler fhandler = new FocusHandler();
-			fldStuName.addFocusListener(fhandler);
-			fldStuID.addFocusListener(fhandler);
-			fldScores.addFocusListener(fhandler);
-			
-			//Set the GUI frame visible
-			mainFrame.setVisible(true);
-		}//end GradeProgram
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public GradeProgram() 
+	{
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 352, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
 		
-		/**
-		 * This class implements the interface ActionListener
-		 * It is a class that will handle the action on the 
-		 * Score button. The required method actionPerformed
-		 * is created to read the input values of the score field
-		 * and save the inputed value in the array
-		 * 
-		 */
-		class ScoreButtonHandler implements ActionListener {
-			public void actionPerformed(ActionEvent e){
+		JLabel lblStuName = new JLabel("Enter Student Name:");
+		lblStuName.setBounds(10, 35, 129, 14);
+		contentPane.add(lblStuName);
+		
+		fldStuName = new JTextField();
+		fldStuName.setBounds(149, 32, 139, 20);
+		contentPane.add(fldStuName);
+		fldStuName.setColumns(10);
+		
+		JLabel lblStuID = new JLabel("Enter Student ID:");
+		lblStuID.setBounds(10, 73, 109, 14);
+		contentPane.add(lblStuID);
+		
+		fldStuID = new JTextField();
+		fldStuID.setBounds(149, 70, 139, 20);
+		contentPane.add(fldStuID);
+		fldStuID.setColumns(10);
+		
+		JLabel lblScores = new JLabel("Enter Scores:");
+		lblScores.setBounds(10, 111, 106, 14);
+		contentPane.add(lblScores);
+		
+		fldScores = new JTextField();
+		fldScores.setBounds(149, 108, 139, 20);
+		contentPane.add(fldScores);
+		fldScores.setColumns(10);
+		
+		JButton btnScore = new JButton("Score");
+		btnScore.setBounds(129, 139, 89, 23);
+		btnScore.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
 				String scoreString;
-				scoreString = btnScore.getText();
+				scoreString = fldScores.getText();				
 				
 				if(!scoreString.equals(""))
 				{
@@ -136,120 +102,164 @@ public class GradeProgram  extends JFrame
 						double tempNum = Double.parseDouble(scoreString);
 						
 						errorExist = ec.RangeChecker(tempNum, 0, 100);
-						
 						if(!errorExist)
 						{
 							scores += tempNum;
-							System.out.println(scores);
+							amtScoresEntered++;
+							fldScores.setText("");
 						}
+						else
+						{
+							JOptionPane.showMessageDialog(null, "Score Must Be Between 0 and 100");
+							fldScores.setText("");
+							fldScores.requestFocus();
+						}
+					}
+					else
+					{
+						JOptionPane.showMessageDialog(null, "Score Must Be A Number!", "Error", JOptionPane.ERROR_MESSAGE);
+						fldScores.setText("");
+						fldScores.requestFocus();
 					}
 				}
 				
 				else
 				{
+					fldScores.setText("");
 					fldScores.requestFocus();
 					//also try fldScores.setText("");
 				}
-				
-				System.exit(0);
-			}//end actionPerformed
-		}//end ScoreButtonHandler
+			}
+		});
+		contentPane.add(btnScore);
 		
-		/**
-		 * This class implements the interface ActionListener
-		 * It is a class that will handle the action on the 
-		 * Score button. The required method actionPerformed
-		 * is created to take the information from all fields
-		 * and numbers from the scores array, calculate the average,
-		 * and display an output screen with all the information
-		 * 
-		 */
-		class CalculateButtonHandler implements ActionListener
+		JButton btnCalculate = new JButton("Calculate");
+		btnCalculate.setBounds(30, 203, 89, 23);
+		btnCalculate.addActionListener(new ActionListener() 
 		{
-			public void actionPerformed(ActionEvent e)
+			public void actionPerformed(ActionEvent arg0)
 			{
-				/*DecimalFormat num = new DecimalFormat(",###.##");
-				double width, length, area;
-				String instring;
+				double averageScore;
+				char ltrGrade;
 				
-				instring = lengthField.getText();
-				if(instring.equals(""))
+				setStudentName();
+				setStudentID();
+				//Error Exist global and therefore will be true if problem occurred somewhere.
+				if(!errorExist)
 				{
-					instring = ("0");
-					lengthField.setText("0");
+					averageScore = scores/amtScoresEntered;
+					ltrGrade = determineLetterGrade(averageScore);
+					if(ltrGrade != 'Z')
+					{
+						JOptionPane.showMessageDialog(null,
+								"Student Name: " + studentName +
+								"\nStudent ID: " + studentID +
+								"\nAverage Score: " + averageScore +
+								"\nLetter Grade: " + ltrGrade,
+								"Results",
+								JOptionPane.INFORMATION_MESSAGE);	
+					}
+					else
+					{
+						JOptionPane.showMessageDialog(null, "Something Went Wrong With Letter Grade, Please Try Again", "Error", JOptionPane.ERROR_MESSAGE);
+					}
 				}
-				length = Double.parseDouble(instring);
-				
-				instring = widthField.getText();
-				if(instring.equals(""))
-				{
-					instring = "0";
-					widthField.setText("0");
-				}
-				width = Double.parseDouble(instring);
-				
-				area = length * width;
-				
-				areaField.setText(num.format(area)); */
-			}//end actionPerformed
-		}//end CalculateButtonHandler
+
+			}
+		});
+		contentPane.add(btnCalculate);
 		
-		/**
-		 * 
-		 * This class implements the interface ActionListener
-		 * It is a class that will handle the action on the 
-		 * Clear button. The required method actionPerformed
-		 * is created to erase all information in the fields
-		 */
-		class ClearButtonHandler implements ActionListener {
-			public void actionPerformed(ActionEvent e){
-				System.exit(0);
-			}//end actionPerformed
-		}//end ClearButtonHandler
-		
-		/**
-		 * This class implements the interface ActionListener
-		 * It is a class that will handle the action on the 
-		 * Exit button. The required method actionPerformed
-		 * is created to terminate the program.
-		 * 
-		 */
-		class ExitButtonHandler implements ActionListener {
-			public void actionPerformed(ActionEvent e){
-				System.exit(0);
-			}//end actionPerformed
-		}//end ExitButtonHandler
-		
-		/**
-		 * This class implements the FocusListener interface
-		 * and handles the focus of the components
-		 * 
-		 */
-		class FocusHandler implements FocusListener
+		JButton btnClear = new JButton("Clear");
+		btnClear.setBounds(129, 203, 89, 23);
+		btnClear.addActionListener(new ActionListener() 
 		{
-			public void focusGained(FocusEvent e)
+			public void actionPerformed(ActionEvent e) 
 			{
-				/*if (e.getSource() == fldStuName || e.getSource() == fldStuID)
-				{
-				}//end if
-				else if(e.getSource() == areaField)
-				{
-					//calculateButton.requestFocus();
-				}//end else if*/
+				fldStuName.setText("");
+				fldStuID.setText("");
+				fldScores.setText("");
+				scores = 0;
+				amtScoresEntered = 0;
 				
-			}//end FocusGained
-			public void focusLost(FocusEvent e)
-			{
-				/*if(e.getSource() == widthField)
-				{
-					calculateButton.requestFocus();
-				}//end if */
-			}//end FocusLost
-		}//end FocusHandler
+				//set cursor at student name since its the first field
+				fldStuName.requestFocus();
+			}
+		});
+		contentPane.add(btnClear);
 		
-		public static void main(String args[])
+		JButton btnExit = new JButton("Exit");
+		btnExit.setBounds(237, 203, 89, 23);
+		btnExit.addActionListener(new ActionListener() 
 		{
-			//new GradeProgram();
-			//new OfficeAreaCalculator();
+			public void actionPerformed(ActionEvent e) 
+			{
+				System.exit(0);
+			}
+		});
+		contentPane.add(btnExit);
+	}
+	
+	public void setStudentName()
+	{
+		String tempName;
+		
+		tempName = fldStuName.getText();
+		errorExist = ec.NullorEmpty(tempName);
+		if(!errorExist)
+		{
+			studentName = tempName;
 		}
-}//end Grade Program
+		else
+		{
+			JOptionPane.showMessageDialog(null, "Student Name Cannot Be Empty", "Error", JOptionPane.ERROR_MESSAGE);
+			fldStuName.requestFocus();
+		}
+	}
+	
+	public void setStudentID()
+	{
+		String tempString;
+		int tempID;
+		
+		tempString = fldStuID.getText();
+		errorExist = ec.IntParseChecker(tempString);
+		if(!errorExist)
+		{
+			tempID = Integer.parseInt(tempString);
+			if(studentID >= 0)
+			{
+				studentID = tempID;
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(null, "Student ID Cannot Be Negative", "Error", JOptionPane.ERROR_MESSAGE);
+				fldStuID.requestFocus();
+			}
+		}
+		else
+		{
+			JOptionPane.showMessageDialog(null, "Student ID Must Be Numeric", "Error", JOptionPane.ERROR_MESSAGE);
+			fldStuID.requestFocus();
+		}
+	}
+	
+	public char determineLetterGrade(double avgScore)
+	{
+		if(avgScore < 80)
+		{
+			return 'F';
+		}
+		else if(avgScore >= 80 && avgScore <= 89)
+		{
+			return 'B';
+		}
+		else if(avgScore >= 90 && avgScore <= 100)
+		{
+			return 'A';
+		}
+		else
+		{
+			return 'Z';
+		}
+	}
+}
