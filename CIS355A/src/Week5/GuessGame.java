@@ -72,15 +72,15 @@ public class GuessGame extends JFrame
 		Container c = mainFrame.getContentPane();
 		
 		//Set the layout of the container
-		c.setLayout(new BorderLayout());
+		c.setLayout(new FlowLayout());
 		
 		//Add components to the container
-		c.add(lblInfo, BorderLayout.NORTH);
-		c.add(fldGuess, BorderLayout.WEST);
-		c.add(btnSbmtGuess, BorderLayout.EAST);
-		c.add(lblResult, BorderLayout.SOUTH);
-		c.add(btnNewGame, BorderLayout.SOUTH);
-		c.add(btnExitGame, BorderLayout.SOUTH);
+		c.add(lblInfo);
+		c.add(fldGuess);
+		c.add(btnSbmtGuess);
+		c.add(lblResult);
+		c.add(btnNewGame);
+		c.add(btnExitGame);
 		
 		//Set the mnemonic for each button
 		btnSbmtGuess.setMnemonic('G');

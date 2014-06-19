@@ -2,10 +2,8 @@ package Week5;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
@@ -14,9 +12,17 @@ public class TextFileIO {
 	
 	public TextFileIO() throws FileNotFoundException
 	{
+		fileWriteEvenNumbers();
+		fileDisplayText();
+		fileWriteOddNumbers();
+		fileDisplayText();
+	}
+	
+	public void fileWriteEvenNumbers()
+	{
 		try 
 		{
-			writer = new PrintWriter(new FileWriter("C:\\Users\\Craig\\Documents\\GitHub\\CIS355A_Devry\\CIS355A\\src\\Week5\\numbers.dat"));
+			writer = new PrintWriter(new FileWriter(".\\src\\Week5\\numbers.dat"));
 		}
 		catch(IOException ex)
 		{
@@ -25,26 +31,54 @@ public class TextFileIO {
 		
 		for(int i = 2; i <= 100; i+=2)
 		{
-			if(i != 100)
+			writer.write(i + ", ");
+		}
+		writer.close();
+	}
+
+	public void fileWriteOddNumbers()
+	{
+		try 
+		{
+			writer = new PrintWriter(new FileWriter(".\\src\\Week5\\numbers.dat", true));
+		}
+		catch(IOException ex)
+		{
+			
+		}
+		
+		for(int i = 1; i <= 99; i+=2)
+		{
+			if(i != 99)
 			{
 				writer.write(i + ", ");
 			}
 			else
 			{
-				writer.write(i + "\n");
+				writer.write(i + "");
 			}
 		}
 		writer.close();
-		
-		Scanner sc = new Scanner(new File("C:\\Users\\Craig\\Documents\\GitHub\\CIS355A_Devry\\CIS355A\\src\\Week5\\numbers.dat"));
-		
+	}
+	
+	public void fileDisplayText()
+	{
+		Scanner sc = null;
+		try 
+		{
+			sc = new Scanner(new File(".\\src\\Week5\\numbers.dat"));
+		} 
+		catch (FileNotFoundException e) 
+		{
+			// TODO: add catch error display
+			e.printStackTrace();
+		}
 		while (sc.hasNext()) {
             String s = sc.nextLine();
             System.out.println(s);
         }
 		sc.close();
 	}
-	
 	public static void main(String[] args)
 	{
 		try 
@@ -56,7 +90,5 @@ public class TextFileIO {
 			// TODO: Add catch error
 			e.printStackTrace();
 		}
-
 	}
-
 }
