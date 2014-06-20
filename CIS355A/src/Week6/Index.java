@@ -74,7 +74,8 @@ public class Index extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
-    public int getNumberOfOccurrences(String searchText, String searchCharacter) {
+    public int getNumberOfOccurrences(String searchText, String searchCharacter) 
+    {
         int count = 0;
         int prevIndex = 0, curIndex = 0;
         if (searchText.length() > 0 && searchCharacter.length()>0) {
