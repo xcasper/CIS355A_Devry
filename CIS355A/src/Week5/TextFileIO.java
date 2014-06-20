@@ -1,3 +1,11 @@
+/***********************************************************************
+Program Name: DayGUI.java
+Programmer's Name: Craig Gleckman
+Program Description: Creates a program that adds all even numbers between 2-100
+				to a file, closes the file, and outputs the contents.
+				The program then appends the odd numbers to that file, closes
+				it, and displays the file contents again.
+***********************************************************************/
 package Week5;
 
 import java.io.File;

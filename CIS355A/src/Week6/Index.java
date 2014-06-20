@@ -1,3 +1,11 @@
+/***********************************************************************
+Program Name: DayGUI.java
+Programmer's Name: Craig Gleckman
+Program Description: Creates a GUI program that asks the user to enter text
+				and a character, and then tells the user how many occurrences
+				of that character exist.
+***********************************************************************/
+
 package Week6;
 
 

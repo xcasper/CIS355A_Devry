@@ -1,3 +1,11 @@
+/***********************************************************************
+Program Name: DayGUI.java
+Programmer's Name: Craig Gleckman
+Program Description: Creates a GUI office calculator where the user enters
+				the width, and length, and the program tells the user the
+				overall area.
+***********************************************************************/
+
 package Week4;
 
 import java.awt.Container;

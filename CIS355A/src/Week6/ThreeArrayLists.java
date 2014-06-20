@@ -1,3 +1,14 @@
+/***********************************************************************
+Program Name: DayGUI.java
+Programmer's Name: Craig Gleckman
+Program Description: Creates a program that has three arrays lists. The 
+				program then adds the supplied price, and quantity, numbers
+				to the price and quantity lists. The program then calculates
+				the overall value of price * quantity for each item in those
+				arrays. The program saves the results to the amount list.
+				The program then outputs the contents of each array in the
+				required format.
+***********************************************************************/
 package Week6;
 
 import java.util.ArrayList;

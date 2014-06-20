@@ -1,3 +1,13 @@
+/***********************************************************************
+Program Name: GradeProgram.java
+Programmer's Name: Craig Gleckman
+Program Description: Creates a GUI program where the user enteres a student's
+				name, ID, and scores. After each score you hit the score button
+				which adds it to the overall score. The program, upon hitting
+				calculate then outputs the student's name, ID, average score,
+				and letter grade.
+***********************************************************************/
+
 package Week4;
 
 import java.awt.BorderLayout;
@@ -18,6 +28,7 @@ import ErrorChecker.ErrorChecker;
 
 public class GradeProgram extends JFrame {
 
+	//Declare global private variables
 	private JPanel contentPane;
 	private JTextField fldStuName;
 	private JTextField fldStuID;
@@ -144,7 +155,7 @@ public class GradeProgram extends JFrame {
 				
 				setStudentName();
 				setStudentID();
-				//Error Exist global and therefore will be true if problem occurred somewhere.
+				//Error Exist is global and therefore will be true if problem occurred somewhere.
 				if(!errorExist)
 				{
 					averageScore = scores/amtScoresEntered;

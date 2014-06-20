@@ -1,3 +1,10 @@
+/***********************************************************************
+Program Name: DayGUI.java
+Programmer's Name: Craig Gleckman
+Program Description: Creates a GUI program that asks the user to enter text
+				and tells them how many occurrences of each alphabetical letter
+				there are in that text.
+***********************************************************************/
 package Week6;
 
 import java.awt.BorderLayout;

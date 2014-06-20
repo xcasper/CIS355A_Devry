@@ -1,6 +1,13 @@
-//TODO: Organize into Panels
-//Panel reference:  http://stackoverflow.com/questions/16270935/how-do-i-get-these-two-buttons-on-the-bottom-of-my-program
-
+/***********************************************************************
+Program Name: GuessGame.java
+Programmer's Name: Craig Gleckman
+Program Description: Creates a GUI based guessing game. The game generates
+				a random number and the user enters a guess. The game then
+				tells the user if they are high or low, and adjusts
+				the color of the games background to reflect that.
+				When the user gets the number correct the game is over
+				and the program tells the user how many attempts it took.
+***********************************************************************/
 
 package Week5;
 
@@ -85,7 +92,7 @@ public class GuessGame extends JFrame
 		btnExitGame.setMnemonic('X');
 		
 		//Set the size of the GUI frame
-		mainFrame.setSize(250, 150);
+		mainFrame.setSize(260, 150);
 		
 		//make it so that the game screen size cant be changed
 		mainFrame.setResizable(false);
@@ -130,7 +137,7 @@ public class GuessGame extends JFrame
 			lblInfo.setForeground(Color.BLACK);
 			lblResult.setForeground(Color.BLACK);
 			mainFrame.getContentPane().setBackground(Color.WHITE);
-			lblResult.setText("Your Guess: " + numGuess + " Is Correct!");
+			lblResult.setText("Your Guess: " + numGuess + " Is Correct! It took you " + guessCount + " tries");
 			fldGuess.setEditable(false);
 		}
 		else if(numAnswer < numGuess)
@@ -156,6 +163,7 @@ public class GuessGame extends JFrame
 			lblResult.setForeground(Color.GRAY);
 			lblResult.setText("An error has occured in guess/answer comparison");
 		}
+		guessCount++;
 	}
 	
 	/**
