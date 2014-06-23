@@ -25,7 +25,6 @@ public class ErrorChecker
 		catch(NumberFormatException ne)
 		{
 			errorFlag = true;
-			JOptionPane.showMessageDialog(null, "Error: Int parse error", "Error", JOptionPane.ERROR_MESSAGE);
 		}	
 		//returns if the string was able to be converted to int. True = yes. False = no.
 		return errorFlag;
@@ -45,7 +44,6 @@ public class ErrorChecker
 		catch(NumberFormatException ne)
 		{
 			errorFlag = true;
-			JOptionPane.showMessageDialog(null, "Error: Double parse error", "Error", JOptionPane.ERROR_MESSAGE);
 		}	
 		
 		//returns if the string was able to be converted to int. True = yes. False = no.
@@ -63,7 +61,6 @@ public class ErrorChecker
 		{
 			errorFlag = true;
 			System.out.println("RangeChecker ran. errorFlag = " + errorFlag);
-			JOptionPane.showMessageDialog(null, "Error: Value Not In Range", "Error", JOptionPane.ERROR_MESSAGE);
 		}//end if
 		
 		//returns if the string was able to be converted to int. True = yes. False = no.
@@ -79,7 +76,6 @@ public class ErrorChecker
 		if(comparisonNum < low || comparisonNum > high)
 		{
 			errorFlag = true;
-			JOptionPane.showMessageDialog(null, "Error: Value Not In Range", "Error", JOptionPane.ERROR_MESSAGE);
 		}//end if
 		
 		//returns if the number was between the low and high. True = yes. False = no.
@@ -103,7 +99,6 @@ public class ErrorChecker
 			if(temp < num)
 			{
 				errorFlag = true;
-				JOptionPane.showMessageDialog(null, "Error: Value Not In Range", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 		}//end else if
 		
@@ -113,13 +108,11 @@ public class ErrorChecker
 			if(temp > num)
 			{
 				errorFlag = true;
-				JOptionPane.showMessageDialog(null, "Error: Value Not In Range", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 		}//end else if
 		else
 		{
 			errorFlag = true;
-			JOptionPane.showMessageDialog(null, "Error: Unforseen ERROR in RangeChecker", "Error", JOptionPane.ERROR_MESSAGE);
 		}//end else
 		
 		//returns if the number was below the low or above the high. True = yes. False = no.
@@ -143,7 +136,6 @@ public class ErrorChecker
 			if(temp < num)
 			{
 				errorFlag = true;
-				JOptionPane.showMessageDialog(null, "Error: Value Not In Range", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 		}//end else if
 		else if(checkMax == true)
@@ -152,13 +144,11 @@ public class ErrorChecker
 			if(temp > num)
 			{
 				errorFlag = true;
-				JOptionPane.showMessageDialog(null, "Error: Value Not In Range", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 		}//end else if
 		else
 		{
 			errorFlag = true;
-			JOptionPane.showMessageDialog(null, "Error: Unforseen ERROR in RangeChecker", "Error", JOptionPane.ERROR_MESSAGE);
 		}//end else
 		
 		//returns if the number was below the low or above the high. True = yes. False = no.
@@ -176,7 +166,6 @@ public class ErrorChecker
 		if(value == null || value.trim().length() == 0)
 		{
 			errorFlag = true;
-			JOptionPane.showMessageDialog(null, "Error: Input is NULL or Empty", "Error", JOptionPane.ERROR_MESSAGE);
 		}//end if
 		
 		//Returns whether or not the string was empty, or had white spaces, or not. True = yes. False = no.

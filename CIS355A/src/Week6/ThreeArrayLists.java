@@ -1,5 +1,5 @@
 /***********************************************************************
-Program Name: DayGUI.java
+Program Name: ThreeArrayLists.java
 Programmer's Name: Craig Gleckman
 Program Description: Creates a program that has three arrays lists. The 
 				program then adds the supplied price, and quantity, numbers
