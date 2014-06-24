@@ -142,10 +142,12 @@ public class Contractor extends JFrame {
 		
 	}
 	
+	//Handles all button presses for the Contractor class
 	class ButtonHandler implements ActionListener 
     {
         public void actionPerformed(ActionEvent e) 
         {
+        	//Handles add contractor button pressed
         	if(e.getSource() == btnAddContractor)
         	{        		
         		txtareaCustError.setText("");
@@ -271,6 +273,7 @@ public class Contractor extends JFrame {
         		}
         	}
         	
+        	//Handles close button pressed
         	if(e.getSource() == btnClose)
         	{
         		fldConName.setText("");
@@ -282,6 +285,7 @@ public class Contractor extends JFrame {
         		dispose();
         	}
         	
+        	//Handles delete file button pressed
         	if(e.getSource() == btnDeleteFile)
         	{
         		File file = new File(".\\src\\Week7\\contractors.txt");

@@ -137,14 +137,14 @@ public class Customer extends JFrame {
 		txtareaCustError.setLineWrap(true);
 		txtareaCustError.setBounds(48, 187, 346, 28);
 		contentPane.add(txtareaCustError);
-		
-		
 	}
 	
+	//Handles all button presses for the Customer class
 	class ButtonHandler implements ActionListener 
     {
         public void actionPerformed(ActionEvent e) 
         {
+        	//Handles add customer button pressed
         	if(e.getSource() == btnAddCustomer)
         	{        		
         		txtareaCustError.setText("");
@@ -270,6 +270,7 @@ public class Customer extends JFrame {
         		}
         	}
         	
+        	//Handles close button pressed
         	if(e.getSource() == btnClose)
         	{
         		fldCustName.setText("");
@@ -281,6 +282,7 @@ public class Customer extends JFrame {
         		dispose();
         	}
         	
+        	//Handles delete file button pressed
         	if(e.getSource() == btnDeleteFile)
         	{
         		File file = new File(".\\src\\Week7\\customers.txt");

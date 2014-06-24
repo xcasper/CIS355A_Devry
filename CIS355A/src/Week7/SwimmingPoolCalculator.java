@@ -134,322 +134,122 @@ public class SwimmingPoolCalculator extends JFrame {
 	 * Create the frame.
 	 */
 	public SwimmingPoolCalculator() {
+		//Sets window title
 		setTitle("Enter Company Name In Options");
-		
+		//main window settings
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 337, 349);
 		getContentPane().setLayout(null);
-		
+		//create main frame/tab
 		jtabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		jtabbedPane.setBounds(0, 0, 331, 320);
 		getContentPane().add(jtabbedPane);
 		
+		//Generate all tabs
 		createGeneralTab();
-		
 		createOptionsTab();
-		
 		createCustomersTab();
-		
 		createContractorsTab();
-		
-		//jpContractors = new JPanel();
-		//jtabbedPane.addTab("Contractors", null, jpContractors, null);
-		
-		jpPools = new JPanel();
-		jtabbedPane.addTab("Pools", null, jpPools, null);
-		jpPools.setLayout(null);
-		
-		lblNewLabel = new JLabel("Enter The Pool's Length(ft):");
-		lblNewLabel.setBounds(10, 27, 169, 14);
-		jpPools.add(lblNewLabel);
-		
-		lblNewLabel_1 = new JLabel("Enter The Pool's Width(ft):");
-		lblNewLabel_1.setBounds(10, 52, 148, 14);
-		jpPools.add(lblNewLabel_1);
-		
-		lblNewLabel_2 = new JLabel("Enter The Pool's Depth(ft):");
-		lblNewLabel_2.setBounds(10, 77, 148, 14);
-		jpPools.add(lblNewLabel_2);
-		
-		fldPoolLength = new JTextField();
-		fldPoolLength.setBounds(168, 24, 126, 20);
-		jpPools.add(fldPoolLength);
-		fldPoolLength.setColumns(10);
-		
-		fldPoolWidth = new JTextField();
-		fldPoolWidth.setBounds(168, 49, 126, 20);
-		jpPools.add(fldPoolWidth);
-		fldPoolWidth.setColumns(10);
-		
-		fldPoolDepth = new JTextField();
-		fldPoolDepth.setBounds(168, 74, 126, 20);
-		jpPools.add(fldPoolDepth);
-		fldPoolDepth.setColumns(10);
-		
-		btnPoolCalculateVolume = new JButton("Calculate Volume");
-		btnPoolCalculateVolume.setMnemonic('C');
-		btnPoolCalculateVolume.addActionListener(btnHandler);
-		btnPoolCalculateVolume.setBounds(37, 102, 142, 23);
-		jpPools.add(btnPoolCalculateVolume);
-		
-		btnPoolExit = new JButton("Exit");
-		btnPoolExit.setMnemonic('X');
-		btnPoolExit.addActionListener(btnHandler);
-		btnPoolExit.setBounds(189, 102, 63, 23);
-		jpPools.add(btnPoolExit);
-		
-		lblThePoolsVolume = new JLabel("The Pool's Volume Is (ft^3):");
-		lblThePoolsVolume.setBounds(10, 136, 156, 14);
-		jpPools.add(lblThePoolsVolume);
-		
-		fldPoolVolume = new JTextField();
-		fldPoolVolume.setEditable(false);
-		fldPoolVolume.setBounds(168, 133, 126, 20);
-		jpPools.add(fldPoolVolume);
-		fldPoolVolume.setColumns(10);
-		
-		lblPoolError = new JLabel("");
-		lblPoolError.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPoolError.setBounds(10, 161, 306, 14);
-		jpPools.add(lblPoolError);
-		
-		jpHotTubs = new JPanel();
-		jtabbedPane.addTab("Hot Tubs", null, jpHotTubs, null);
-		jpHotTubs.setLayout(null);
-		
-		rdbtnRoundTub = new JRadioButtonMenuItem("Round Tub");
-		rdbtnRoundTub.setSelected(true);
-		rdbtnRoundTub.addActionListener(btnHandler);
-		rdbtnRoundTub.setBounds(45, 11, 125, 22);
-		jpHotTubs.add(rdbtnRoundTub);
-		
-		rdbtnOvalTub = new JRadioButtonMenuItem("Oval Tub");
-		rdbtnOvalTub.addActionListener(btnHandler);
-		rdbtnOvalTub.setBounds(177, 11, 125, 22);
-		jpHotTubs.add(rdbtnOvalTub);
-		
-		 ButtonGroup radioBtnGroup = new ButtonGroup();
-	     radioBtnGroup.add(rdbtnRoundTub);
-	     radioBtnGroup.add(rdbtnOvalTub);
-	     
-	     lblNewLabel_3 = new JLabel("Enter The Tub's Length(ft):");
-	     lblNewLabel_3.setBounds(10, 44, 160, 14);
-	     jpHotTubs.add(lblNewLabel_3);
-	     
-	     lblNewLabel_4 = new JLabel("Enter The Tub's Width(ft):");
-	     lblNewLabel_4.setBounds(10, 69, 160, 14);
-	     jpHotTubs.add(lblNewLabel_4);
-	     
-	     lblNewLabel_5 = new JLabel("Enter The Tub's Depth(ft):");
-	     lblNewLabel_5.setBounds(10, 93, 160, 14);
-	     jpHotTubs.add(lblNewLabel_5);
-	     
-	     fldTubLength = new JTextField();
-	     fldTubLength.setBounds(164, 41, 138, 20);
-	     jpHotTubs.add(fldTubLength);
-	     fldTubLength.setColumns(10);
-	     
-	     fldTubWidth = new JTextField();
-	     fldTubWidth.setEditable(false);
-	     fldTubWidth.setBounds(164, 66, 138, 20);
-	     jpHotTubs.add(fldTubWidth);
-	     fldTubWidth.setColumns(10);
-	     
-	     fldTubDepth = new JTextField();
-	     fldTubDepth.setBounds(164, 90, 138, 20);
-	     jpHotTubs.add(fldTubDepth);
-	     fldTubDepth.setColumns(10);
-	     
-	     btnTubCalculateVolume = new JButton("Calculate Volume");
-	     btnTubCalculateVolume.setMnemonic('C');
-	     btnTubCalculateVolume.addActionListener(btnHandler);
-	     btnTubCalculateVolume.setBounds(32, 118, 154, 23);
-	     jpHotTubs.add(btnTubCalculateVolume);
-	     
-	     btnTubExit = new JButton("Exit");
-	     btnTubExit.setMnemonic('X');
-	     btnTubExit.addActionListener(btnHandler);
-	     btnTubExit.setBounds(195, 118, 89, 23);
-	     jpHotTubs.add(btnTubExit);
-	     
-	     lblTheTubsVolume = new JLabel("The Tub's Volume is (ft^3):");
-	     lblTheTubsVolume.setBounds(10, 152, 160, 14);
-	     jpHotTubs.add(lblTheTubsVolume);
-	     
-	     fldTubVolume = new JTextField();
-	     fldTubVolume.setEditable(false);
-	     fldTubVolume.setBounds(164, 149, 138, 20);
-	     jpHotTubs.add(fldTubVolume);
-	     fldTubVolume.setColumns(10);
-	     
-	     lblTubError = new JLabel("Width Will Be Set To The Same Value As Length");
-	     lblTubError.setHorizontalAlignment(SwingConstants.CENTER);
-	     lblTubError.setBounds(10, 177, 292, 14);
-	     jpHotTubs.add(lblTubError);
-		
-		jpTempCalc = new JPanel();
-		jtabbedPane.addTab("Temp Calc", null, jpTempCalc, null);
-		jpTempCalc.setLayout(null);
-		
-		lblNewLabel_6 = new JLabel("Enter Temperature:");
-		lblNewLabel_6.setBounds(10, 25, 121, 14);
-		jpTempCalc.add(lblNewLabel_6);
-		
-		fldTempTemp = new JTextField();
-		fldTempTemp.setBounds(137, 22, 123, 20);
-		jpTempCalc.add(fldTempTemp);
-		fldTempTemp.setColumns(10);
-		
-		//Create array of available options for combo box
-		String[] temps = {"F", "C"};
-		boxTempMeasurement = new JComboBox(temps);
-		boxTempMeasurement.setModel(new DefaultComboBoxModel(new String[] {"C", "F"}));
-		boxTempMeasurement.setSelectedIndex(0);
-		boxTempMeasurement.addActionListener(btnHandler);
-		boxTempMeasurement.setBounds(270, 22, 46, 20);
-		jpTempCalc.add(boxTempMeasurement);
-		
-		lblResult = new JLabel("Result:");
-		lblResult.setBounds(10, 63, 46, 14);
-		jpTempCalc.add(lblResult);
-		
-		fldTempResult = new JTextField();
-		fldTempResult.setBounds(66, 60, 209, 20);
-		jpTempCalc.add(fldTempResult);
-		fldTempResult.setColumns(10);
-		
-		lblTempMeasurement = new JLabel("F");
-		lblTempMeasurement.setBounds(280, 63, 20, 14);
-		jpTempCalc.add(lblTempMeasurement);
-		
-		btnTempConvert = new JButton("Convert");
-		btnTempConvert.setMnemonic('C');
-		btnTempConvert.addActionListener(btnHandler);
-		btnTempConvert.setBounds(76, 91, 89, 23);
-		jpTempCalc.add(btnTempConvert);
-		
-		btnTempExit = new JButton("Exit");
-		btnTempExit.setMnemonic('X');
-		btnTempExit.addActionListener(btnHandler);
-		btnTempExit.setBounds(175, 91, 89, 23);
-		jpTempCalc.add(btnTempExit);
-		
-		lblTempError = new JLabel("");
-		lblTempError.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTempError.setBounds(10, 125, 306, 14);
-		jpTempCalc.add(lblTempError);
-		
-		jpLengthCalc = new JPanel();
-		jtabbedPane.addTab("Length Calc", null, jpLengthCalc, null);
-		jpLengthCalc.setLayout(null);
-		
-		txtMillimeteres = new JTextField();
-		txtMillimeteres.setHorizontalAlignment(SwingConstants.CENTER);
-		txtMillimeteres.setEditable(false);
-		txtMillimeteres.setText("Millimeters");
-		txtMillimeteres.setBounds(10, 11, 66, 20);
-		jpLengthCalc.add(txtMillimeteres);
-		txtMillimeteres.setColumns(10);
-		
-		txtMeters = new JTextField();
-		txtMeters.setHorizontalAlignment(SwingConstants.CENTER);
-		txtMeters.setEditable(false);
-		txtMeters.setText("Meters");
-		txtMeters.setBounds(86, 11, 49, 20);
-		jpLengthCalc.add(txtMeters);
-		txtMeters.setColumns(10);
-		
-		txtYards = new JTextField();
-		txtYards.setHorizontalAlignment(SwingConstants.CENTER);
-		txtYards.setEditable(false);
-		txtYards.setText("Yards");
-		txtYards.setBounds(145, 11, 53, 20);
-		jpLengthCalc.add(txtYards);
-		txtYards.setColumns(10);
-		
-		txtFeet = new JTextField();
-		txtFeet.setHorizontalAlignment(SwingConstants.CENTER);
-		txtFeet.setEditable(false);
-		txtFeet.setText("Feet");
-		txtFeet.setBounds(208, 11, 49, 20);
-		jpLengthCalc.add(txtFeet);
-		txtFeet.setColumns(10);
-		
-		txtInches = new JTextField();
-		txtInches.setHorizontalAlignment(SwingConstants.CENTER);
-		txtInches.setEditable(false);
-		txtInches.setText("Inches");
-		txtInches.setBounds(267, 11, 49, 20);
-		jpLengthCalc.add(txtInches);
-		txtInches.setColumns(10);
-		
-		fldMillimeters = new JTextField();
-		fldMillimeters.setHorizontalAlignment(SwingConstants.CENTER);
-		fldMillimeters.setColumns(10);
-		fldMillimeters.setBounds(10, 42, 66, 20);
-		jpLengthCalc.add(fldMillimeters);
-		
-		fldMeters = new JTextField();
-		fldMeters.setHorizontalAlignment(SwingConstants.CENTER);
-		fldMeters.setColumns(10);
-		fldMeters.setBounds(86, 42, 49, 20);
-		jpLengthCalc.add(fldMeters);
-		
-		fldYards = new JTextField();
-		fldYards.setHorizontalAlignment(SwingConstants.CENTER);
-		fldYards.setColumns(10);
-		fldYards.setBounds(145, 42, 53, 20);
-		jpLengthCalc.add(fldYards);
-		
-		fldFeet = new JTextField();
-		fldFeet.setHorizontalAlignment(SwingConstants.CENTER);
-		fldFeet.setColumns(10);
-		fldFeet.setBounds(208, 42, 49, 20);
-		jpLengthCalc.add(fldFeet);
-		
-		fldInches = new JTextField();
-		fldInches.setHorizontalAlignment(SwingConstants.CENTER);
-		fldInches.setColumns(10);
-		fldInches.setBounds(265, 42, 51, 20);
-		jpLengthCalc.add(fldInches);
-		
-		btnLengthConvert = new JButton("Convert");
-		btnLengthConvert.setBounds(20, 73, 104, 23);
-		btnLengthConvert.addActionListener(btnHandler);
-		jpLengthCalc.add(btnLengthConvert);
-		
-		btnLengthExit = new JButton("Exit");
-		btnLengthExit.setBounds(134, 73, 66, 23);
-		btnLengthExit.addActionListener(btnHandler);
-		jpLengthCalc.add(btnLengthExit);
-		
-		btnLengthClear = new JButton("Clear");
-		btnLengthClear.setBounds(208, 73, 96, 23);
-		btnLengthClear.addActionListener(btnHandler);
-		jpLengthCalc.add(btnLengthClear);
+		createPoolsTab();
+		createHotTubsTab();
+		createTempCalcTab();
+		createLengthCalcTab();
 	}
 	
+	//handles all button presses within the main SwimmingPoolCalculator
 	class ButtonHandler implements ActionListener
 	{
 		public void actionPerformed(ActionEvent e)
 		{
+			//General tab exit button
 			if(e.getSource() == btnGeneralExit)
 			{
 				System.exit(0);
 			}
 			
+			//Option tab exit button
 			if(e.getSource() == btnOptionExit)
 			{
 				System.exit(0);
 			}
 			
+			//Option tab set new name button
 			if(e.getSource() == btnSetNewName)
 			{
 				setTitle(fldCompanyName.getText());
 				fldCompanyName.setText(fldCompanyName.getText());
 			}
 			
+			//Customer tab add customer button
+			if(e.getSource() == btnCustomerAdd)
+			{
+				Customer cust = new Customer();
+				cust.run();
+			}
+			
+			//Customer tab exit button
+			if(e.getSource() == btnCustomerExit)
+			{
+				System.exit(0);
+			}
+			
+			//Customer tab refresh button
+			if(e.getSource() == btnCustomerRefresh)
+			{
+				Scanner sc = null;
+				try 
+				{
+					sc = new Scanner(new File(".\\src\\Week7\\customers.txt"));
+				} 
+				catch (FileNotFoundException ex) 
+				{
+					txtareaCustomerError.setText("Customer's file does not exist. It will be created when you add a customer");
+					ex.printStackTrace();
+				}
+				txtareaCustomerInfo.setText("");
+				while (sc.hasNext()) {
+		            String info = sc.nextLine();
+		            txtareaCustomerInfo.setText(txtareaCustomerInfo.getText() + info + "\n");
+		        }
+				sc.close();
+			}
+			
+			//Contract tab add contractror button
+			if(e.getSource() == btnContractorsAdd)
+			{
+				Contractor contractor = new Contractor();
+				contractor.run();
+			}
+			
+			//Contractor tab exit button
+			if(e.getSource() == btnContractorsExit)
+			{
+				System.exit(0);
+			}
+			
+			//contractor tab refresh button
+			if(e.getSource() == btnContractorsRefresh)
+			{
+				Scanner sc = null;
+				try 
+				{
+					sc = new Scanner(new File(".\\src\\Week7\\contractors.txt"));
+				} 
+				catch (FileNotFoundException ex) 
+				{
+					txtareaContractorError.setText("Contractor's file does not exist. It will be created when you add a Contractor");
+					ex.printStackTrace();
+				}
+				txtareaContractorInfo.setText("");
+				while (sc.hasNext()) {
+		            String info = sc.nextLine();
+		            txtareaContractorInfo.setText(txtareaContractorInfo.getText() + info + "\n");
+		        }
+				sc.close();
+			}
+			
+			//Pool tab calculate button
 			if(e.getSource() == btnPoolCalculateVolume)
 			{
 				double length = 0, width = 0, depth = 0, volume = 0;
@@ -532,11 +332,13 @@ public class SwimmingPoolCalculator extends JFrame {
 				}
 			}//end if (PoolCalculateButton)
 			
+			//Pool tab exit button
 			if(e.getSource() == btnPoolExit)
 			{
 				System.exit(0);
 			}
 			
+			//Hot Tub tab calculate button
 			if(e.getSource() == btnTubCalculateVolume)
 			{
 				double length = 0, width = 0, depth = 0, volume = 0;
@@ -642,23 +444,27 @@ public class SwimmingPoolCalculator extends JFrame {
 				}
 			}
 			
+			//Hot Tub tab exit button
 			if(e.getSource() == btnTubExit)
 			{
 				System.exit(0);
 			}
 			
+			//Hot Tub tab radio button 'round tub' button
 			if(e.getSource() == rdbtnRoundTub)
 			{
 				fldTubWidth.setEditable(false);
 				lblTubError.setText("Width Will Be Set To The Same Value As Length");
 			}
 			
+			//Hot Tub tab radio button 'oval tub' button
 			if(e.getSource() == rdbtnOvalTub)
 			{
 				fldTubWidth.setEditable(true);
 				lblTubError.setText("");
 			}
 			
+			//Temp Calc tab measurement type (f - fahrenheit | c - celcius) 
 			if(e.getSource() == boxTempMeasurement)
 			{
 				if(boxTempMeasurement.getSelectedItem().equals("F"))
@@ -670,6 +476,8 @@ public class SwimmingPoolCalculator extends JFrame {
 					lblTempMeasurement.setText("F");
 				}
 			}
+			
+			//Temp Calc tab convert button
 			if(e.getSource() == btnTempConvert)
 			{
 				double temperature = 0;
@@ -718,76 +526,16 @@ public class SwimmingPoolCalculator extends JFrame {
 					
 			}
 			
+			//Temp Calc tab exit button
 			if(e.getSource() == btnTempExit)
 			{
 				System.exit(0);
 			}
 			
-			if(e.getSource() == btnCustomerAdd)
-			{
-				Customer cust = new Customer();
-				cust.run();
-			}
-			
-			if(e.getSource() == btnCustomerExit)
-			{
-				System.exit(0);
-			}
-			
-			if(e.getSource() == btnCustomerRefresh)
-			{
-				Scanner sc = null;
-				try 
-				{
-					sc = new Scanner(new File(".\\src\\Week7\\customers.txt"));
-				} 
-				catch (FileNotFoundException ex) 
-				{
-					txtareaCustomerError.setText("Customer's file does not exist. It will be created when you add a customer");
-					ex.printStackTrace();
-				}
-				txtareaCustomerInfo.setText("");
-				while (sc.hasNext()) {
-		            String info = sc.nextLine();
-		            txtareaCustomerInfo.setText(txtareaCustomerInfo.getText() + info + "\n");
-		        }
-				sc.close();
-			}
-			
-			if(e.getSource() == btnContractorsAdd)
-			{
-				Contractor contractor = new Contractor();
-				contractor.run();
-			}
-			
-			if(e.getSource() == btnContractorsExit)
-			{
-				System.exit(0);
-			}
-			
-			if(e.getSource() == btnContractorsRefresh)
-			{
-				Scanner sc = null;
-				try 
-				{
-					sc = new Scanner(new File(".\\src\\Week7\\contractors.txt"));
-				} 
-				catch (FileNotFoundException ex) 
-				{
-					txtareaContractorError.setText("Contractor's file does not exist. It will be created when you add a Contractor");
-					ex.printStackTrace();
-				}
-				txtareaContractorInfo.setText("");
-				while (sc.hasNext()) {
-		            String info = sc.nextLine();
-		            txtareaContractorInfo.setText(txtareaContractorInfo.getText() + info + "\n");
-		        }
-				sc.close();
-			}
-			
-			String tempVal;
+			//Length Calc tab convert button
 			if(e.getSource() == btnLengthConvert)
 			{
+				String tempVal;
 				String fieldEntered;
 				DecimalFormat formatter = new DecimalFormat("#,###,###.####");
 				
@@ -962,11 +710,13 @@ public class SwimmingPoolCalculator extends JFrame {
 
 			}
 			
+			//Length Calc tab exit button
 			if(e.getSource() == btnLengthExit)
 			{
 				System.exit(0);
 			}
 			
+			//Length Calc tab clear button
 			if(e.getSource() == btnLengthClear)
 			{
 				fldMillimeters.setText("");
@@ -1131,6 +881,291 @@ public class SwimmingPoolCalculator extends JFrame {
 		{
 			txtareaContractorError.setText("File " + filename + " does not exist yet! Will be created when you add a contractor!");
 		}
+	}
+	
+	public void createPoolsTab()
+	{
+		jpPools = new JPanel();
+		jtabbedPane.addTab("Pools", null, jpPools, null);
+		jpPools.setLayout(null);
+		
+		lblNewLabel = new JLabel("Enter The Pool's Length(ft):");
+		lblNewLabel.setBounds(10, 27, 169, 14);
+		jpPools.add(lblNewLabel);
+		
+		lblNewLabel_1 = new JLabel("Enter The Pool's Width(ft):");
+		lblNewLabel_1.setBounds(10, 52, 148, 14);
+		jpPools.add(lblNewLabel_1);
+		
+		lblNewLabel_2 = new JLabel("Enter The Pool's Depth(ft):");
+		lblNewLabel_2.setBounds(10, 77, 148, 14);
+		jpPools.add(lblNewLabel_2);
+		
+		fldPoolLength = new JTextField();
+		fldPoolLength.setBounds(168, 24, 126, 20);
+		jpPools.add(fldPoolLength);
+		fldPoolLength.setColumns(10);
+		
+		fldPoolWidth = new JTextField();
+		fldPoolWidth.setBounds(168, 49, 126, 20);
+		jpPools.add(fldPoolWidth);
+		fldPoolWidth.setColumns(10);
+		
+		fldPoolDepth = new JTextField();
+		fldPoolDepth.setBounds(168, 74, 126, 20);
+		jpPools.add(fldPoolDepth);
+		fldPoolDepth.setColumns(10);
+		
+		btnPoolCalculateVolume = new JButton("Calculate Volume");
+		btnPoolCalculateVolume.setMnemonic('C');
+		btnPoolCalculateVolume.addActionListener(btnHandler);
+		btnPoolCalculateVolume.setBounds(37, 102, 142, 23);
+		jpPools.add(btnPoolCalculateVolume);
+		
+		btnPoolExit = new JButton("Exit");
+		btnPoolExit.setMnemonic('X');
+		btnPoolExit.addActionListener(btnHandler);
+		btnPoolExit.setBounds(189, 102, 63, 23);
+		jpPools.add(btnPoolExit);
+		
+		lblThePoolsVolume = new JLabel("The Pool's Volume Is (ft^3):");
+		lblThePoolsVolume.setBounds(10, 136, 156, 14);
+		jpPools.add(lblThePoolsVolume);
+		
+		fldPoolVolume = new JTextField();
+		fldPoolVolume.setEditable(false);
+		fldPoolVolume.setBounds(168, 133, 126, 20);
+		jpPools.add(fldPoolVolume);
+		fldPoolVolume.setColumns(10);
+		
+		lblPoolError = new JLabel("");
+		lblPoolError.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPoolError.setBounds(10, 161, 306, 14);
+		jpPools.add(lblPoolError);
+	}
+	
+	public void createHotTubsTab()
+	{
+		jpHotTubs = new JPanel();
+		jtabbedPane.addTab("Hot Tubs", null, jpHotTubs, null);
+		jpHotTubs.setLayout(null);
+		
+		rdbtnRoundTub = new JRadioButtonMenuItem("Round Tub");
+		rdbtnRoundTub.setSelected(true);
+		rdbtnRoundTub.addActionListener(btnHandler);
+		rdbtnRoundTub.setBounds(45, 11, 125, 22);
+		jpHotTubs.add(rdbtnRoundTub);
+		
+		rdbtnOvalTub = new JRadioButtonMenuItem("Oval Tub");
+		rdbtnOvalTub.addActionListener(btnHandler);
+		rdbtnOvalTub.setBounds(177, 11, 125, 22);
+		jpHotTubs.add(rdbtnOvalTub);
+		
+		 ButtonGroup radioBtnGroup = new ButtonGroup();
+	     radioBtnGroup.add(rdbtnRoundTub);
+	     radioBtnGroup.add(rdbtnOvalTub);
+	     
+	     lblNewLabel_3 = new JLabel("Enter The Tub's Length(ft):");
+	     lblNewLabel_3.setBounds(10, 44, 160, 14);
+	     jpHotTubs.add(lblNewLabel_3);
+	     
+	     lblNewLabel_4 = new JLabel("Enter The Tub's Width(ft):");
+	     lblNewLabel_4.setBounds(10, 69, 160, 14);
+	     jpHotTubs.add(lblNewLabel_4);
+	     
+	     lblNewLabel_5 = new JLabel("Enter The Tub's Depth(ft):");
+	     lblNewLabel_5.setBounds(10, 93, 160, 14);
+	     jpHotTubs.add(lblNewLabel_5);
+	     
+	     fldTubLength = new JTextField();
+	     fldTubLength.setBounds(164, 41, 138, 20);
+	     jpHotTubs.add(fldTubLength);
+	     fldTubLength.setColumns(10);
+	     
+	     fldTubWidth = new JTextField();
+	     fldTubWidth.setEditable(false);
+	     fldTubWidth.setBounds(164, 66, 138, 20);
+	     jpHotTubs.add(fldTubWidth);
+	     fldTubWidth.setColumns(10);
+	     
+	     fldTubDepth = new JTextField();
+	     fldTubDepth.setBounds(164, 90, 138, 20);
+	     jpHotTubs.add(fldTubDepth);
+	     fldTubDepth.setColumns(10);
+	     
+	     btnTubCalculateVolume = new JButton("Calculate Volume");
+	     btnTubCalculateVolume.setMnemonic('C');
+	     btnTubCalculateVolume.addActionListener(btnHandler);
+	     btnTubCalculateVolume.setBounds(32, 118, 154, 23);
+	     jpHotTubs.add(btnTubCalculateVolume);
+	     
+	     btnTubExit = new JButton("Exit");
+	     btnTubExit.setMnemonic('X');
+	     btnTubExit.addActionListener(btnHandler);
+	     btnTubExit.setBounds(195, 118, 89, 23);
+	     jpHotTubs.add(btnTubExit);
+	     
+	     lblTheTubsVolume = new JLabel("The Tub's Volume is (ft^3):");
+	     lblTheTubsVolume.setBounds(10, 152, 160, 14);
+	     jpHotTubs.add(lblTheTubsVolume);
+	     
+	     fldTubVolume = new JTextField();
+	     fldTubVolume.setEditable(false);
+	     fldTubVolume.setBounds(164, 149, 138, 20);
+	     jpHotTubs.add(fldTubVolume);
+	     fldTubVolume.setColumns(10);
+	     
+	     lblTubError = new JLabel("Width Will Be Set To The Same Value As Length");
+	     lblTubError.setHorizontalAlignment(SwingConstants.CENTER);
+	     lblTubError.setBounds(10, 177, 292, 14);
+	     jpHotTubs.add(lblTubError);
+	}
+	
+	public void createTempCalcTab()
+	{
+		jpTempCalc = new JPanel();
+		jtabbedPane.addTab("Temp Calc", null, jpTempCalc, null);
+		jpTempCalc.setLayout(null);
+		
+		lblNewLabel_6 = new JLabel("Enter Temperature:");
+		lblNewLabel_6.setBounds(10, 25, 121, 14);
+		jpTempCalc.add(lblNewLabel_6);
+		
+		fldTempTemp = new JTextField();
+		fldTempTemp.setBounds(137, 22, 123, 20);
+		jpTempCalc.add(fldTempTemp);
+		fldTempTemp.setColumns(10);
+		
+		//Create array of available options for combo box
+		String[] temps = {"F", "C"};
+		boxTempMeasurement = new JComboBox(temps);
+		boxTempMeasurement.setModel(new DefaultComboBoxModel(new String[] {"C", "F"}));
+		boxTempMeasurement.setSelectedIndex(0);
+		boxTempMeasurement.addActionListener(btnHandler);
+		boxTempMeasurement.setBounds(270, 22, 46, 20);
+		jpTempCalc.add(boxTempMeasurement);
+		
+		lblResult = new JLabel("Result:");
+		lblResult.setBounds(10, 63, 46, 14);
+		jpTempCalc.add(lblResult);
+		
+		fldTempResult = new JTextField();
+		fldTempResult.setBounds(66, 60, 209, 20);
+		jpTempCalc.add(fldTempResult);
+		fldTempResult.setColumns(10);
+		
+		lblTempMeasurement = new JLabel("F");
+		lblTempMeasurement.setBounds(280, 63, 20, 14);
+		jpTempCalc.add(lblTempMeasurement);
+		
+		btnTempConvert = new JButton("Convert");
+		btnTempConvert.setMnemonic('C');
+		btnTempConvert.addActionListener(btnHandler);
+		btnTempConvert.setBounds(76, 91, 89, 23);
+		jpTempCalc.add(btnTempConvert);
+		
+		btnTempExit = new JButton("Exit");
+		btnTempExit.setMnemonic('X');
+		btnTempExit.addActionListener(btnHandler);
+		btnTempExit.setBounds(175, 91, 89, 23);
+		jpTempCalc.add(btnTempExit);
+		
+		lblTempError = new JLabel("");
+		lblTempError.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTempError.setBounds(10, 125, 306, 14);
+		jpTempCalc.add(lblTempError);
+	}
+	
+	public void createLengthCalcTab()
+	{
+		jpLengthCalc = new JPanel();
+		jtabbedPane.addTab("Length Calc", null, jpLengthCalc, null);
+		jpLengthCalc.setLayout(null);
+		
+		txtMillimeteres = new JTextField();
+		txtMillimeteres.setHorizontalAlignment(SwingConstants.CENTER);
+		txtMillimeteres.setEditable(false);
+		txtMillimeteres.setText("Millimeters");
+		txtMillimeteres.setBounds(10, 11, 66, 20);
+		jpLengthCalc.add(txtMillimeteres);
+		txtMillimeteres.setColumns(10);
+		
+		txtMeters = new JTextField();
+		txtMeters.setHorizontalAlignment(SwingConstants.CENTER);
+		txtMeters.setEditable(false);
+		txtMeters.setText("Meters");
+		txtMeters.setBounds(86, 11, 49, 20);
+		jpLengthCalc.add(txtMeters);
+		txtMeters.setColumns(10);
+		
+		txtYards = new JTextField();
+		txtYards.setHorizontalAlignment(SwingConstants.CENTER);
+		txtYards.setEditable(false);
+		txtYards.setText("Yards");
+		txtYards.setBounds(145, 11, 53, 20);
+		jpLengthCalc.add(txtYards);
+		txtYards.setColumns(10);
+		
+		txtFeet = new JTextField();
+		txtFeet.setHorizontalAlignment(SwingConstants.CENTER);
+		txtFeet.setEditable(false);
+		txtFeet.setText("Feet");
+		txtFeet.setBounds(208, 11, 49, 20);
+		jpLengthCalc.add(txtFeet);
+		txtFeet.setColumns(10);
+		
+		txtInches = new JTextField();
+		txtInches.setHorizontalAlignment(SwingConstants.CENTER);
+		txtInches.setEditable(false);
+		txtInches.setText("Inches");
+		txtInches.setBounds(267, 11, 49, 20);
+		jpLengthCalc.add(txtInches);
+		txtInches.setColumns(10);
+		
+		fldMillimeters = new JTextField();
+		fldMillimeters.setHorizontalAlignment(SwingConstants.CENTER);
+		fldMillimeters.setColumns(10);
+		fldMillimeters.setBounds(10, 42, 66, 20);
+		jpLengthCalc.add(fldMillimeters);
+		
+		fldMeters = new JTextField();
+		fldMeters.setHorizontalAlignment(SwingConstants.CENTER);
+		fldMeters.setColumns(10);
+		fldMeters.setBounds(86, 42, 49, 20);
+		jpLengthCalc.add(fldMeters);
+		
+		fldYards = new JTextField();
+		fldYards.setHorizontalAlignment(SwingConstants.CENTER);
+		fldYards.setColumns(10);
+		fldYards.setBounds(145, 42, 53, 20);
+		jpLengthCalc.add(fldYards);
+		
+		fldFeet = new JTextField();
+		fldFeet.setHorizontalAlignment(SwingConstants.CENTER);
+		fldFeet.setColumns(10);
+		fldFeet.setBounds(208, 42, 49, 20);
+		jpLengthCalc.add(fldFeet);
+		
+		fldInches = new JTextField();
+		fldInches.setHorizontalAlignment(SwingConstants.CENTER);
+		fldInches.setColumns(10);
+		fldInches.setBounds(265, 42, 51, 20);
+		jpLengthCalc.add(fldInches);
+		
+		btnLengthConvert = new JButton("Convert");
+		btnLengthConvert.setBounds(20, 73, 104, 23);
+		btnLengthConvert.addActionListener(btnHandler);
+		jpLengthCalc.add(btnLengthConvert);
+		
+		btnLengthExit = new JButton("Exit");
+		btnLengthExit.setBounds(134, 73, 66, 23);
+		btnLengthExit.addActionListener(btnHandler);
+		jpLengthCalc.add(btnLengthExit);
+		
+		btnLengthClear = new JButton("Clear");
+		btnLengthClear.setBounds(208, 73, 96, 23);
+		btnLengthClear.addActionListener(btnHandler);
+		jpLengthCalc.add(btnLengthClear);
 	}
 }
 
