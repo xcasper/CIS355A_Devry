@@ -1,3 +1,11 @@
+/***********************************************************************
+Program Name: Customer.java
+Programmer's Name: Craig Gleckman
+Program Description: Generates the 'Add Customer window for Swimming Pool 
+				Calculator. Allows the user to enter a customers information
+				and then saves the information to the file. Also allows the
+				user to delete the customer file.
+***********************************************************************/
 package Week7;
 
 import java.awt.BorderLayout;
@@ -80,6 +88,7 @@ public class Customer extends JFrame {
 	            "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY" };
 		comboStates = new JComboBox(states);
 		comboStates.setBounds(10, 113, 46, 20);
+		comboStates.addActionListener(btnHandler);
 		contentPane.add(comboStates);
 		
 		lblNewLabel_3 = new JLabel("Zip:");
@@ -144,6 +153,12 @@ public class Customer extends JFrame {
     {
         public void actionPerformed(ActionEvent e) 
         {
+        	//Handles state selection chosen
+        	if(e.getSource() == comboStates)
+        	{
+        		int tempVal = comboStates.getSelectedIndex();
+        		comboStates.setSelectedIndex(tempVal);
+        	}
         	//Handles add customer button pressed
         	if(e.getSource() == btnAddCustomer)
         	{        		

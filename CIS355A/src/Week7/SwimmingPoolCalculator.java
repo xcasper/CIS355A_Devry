@@ -1,3 +1,41 @@
+/***********************************************************************
+Program Name: SwimmingPoolCalculator.java
+Programmer's Name: Craig Gleckman
+Program Description: Creates the main program with 8 tabs that offer 
+			different functionality. 
+			Tabs: 
+				General: Shows the system time and offers an exit button
+				
+				Options: Allows the user to change the company name (aka window title) 
+						for that session
+				
+				Customers: Allows the user to preview the current customer
+						   in the customers file. Also calls the Customer class
+						   upon 'add customer' being pressed.
+				
+				Contractors: Same as Customers except, it is for contractors. 
+							 Functionality is the exact same.
+				
+				Pools: Allows the user to enter a pools length, width, and height.
+				 		The program then calculates the volume and gives the user
+				 		the result
+				
+				Hot Tubs: Allows the user to choose between round and hot tubs
+							If the tub is round then the width is equal to the height
+							If oval the width is seperate. The program then calculates
+							the volume depending on tub type and gives the result
+							to the user
+				
+				Temp Calc: Allows the user to enter a number and convert it 
+							from fahrenheight to celcius and celcius to fahrenheight
+				
+				Length Calc: Allows the user to enter a length in millimeters,
+							meters, yards, feet, or inches, and then converts that entered number
+							to the appropriate value and displays in the empty fields. 
+							(ex: millimeters entered, program converts millimeters to meters, 
+							yards, feet, and inches)
+***********************************************************************/
+
 package Week7;
 
 import java.awt.BorderLayout;
@@ -801,13 +839,13 @@ public class SwimmingPoolCalculator extends JFrame {
 		btnCustomerExit = new JButton("Exit");
 		btnCustomerExit.setMnemonic('X');
 		btnCustomerExit.addActionListener(btnHandler);
-		btnCustomerExit.setBounds(10, 194, 89, 23);
+		btnCustomerExit.setBounds(10, 194, 78, 23);
 		jpCustomers.add(btnCustomerExit);
 		
 		btnCustomerAdd = new JButton("Add Customer");
 		btnCustomerAdd.setMnemonic('A');
 		btnCustomerAdd.addActionListener(btnHandler);
-		btnCustomerAdd.setBounds(109, 194, 109, 23);
+		btnCustomerAdd.setBounds(100, 194, 118, 23);
 		jpCustomers.add(btnCustomerAdd);
 		
 		btnCustomerRefresh = new JButton("Refresh");
@@ -850,13 +888,13 @@ public class SwimmingPoolCalculator extends JFrame {
 		btnContractorsExit = new JButton("Exit");
 		btnContractorsExit.setMnemonic('X');
 		btnContractorsExit.addActionListener(btnHandler);
-		btnContractorsExit.setBounds(10, 194, 89, 23);
+		btnContractorsExit.setBounds(10, 194, 72, 23);
 		jpContractors.add(btnContractorsExit);
 		
 		btnContractorsAdd = new JButton("Add Contractor");
 		btnContractorsAdd.setMnemonic('A');
 		btnContractorsAdd.addActionListener(btnHandler);
-		btnContractorsAdd.setBounds(103, 194, 122, 23);
+		btnContractorsAdd.setBounds(92, 194, 133, 23);
 		jpContractors.add(btnContractorsAdd);
 		
 		btnContractorsRefresh = new JButton("Refresh");
@@ -1153,16 +1191,19 @@ public class SwimmingPoolCalculator extends JFrame {
 		jpLengthCalc.add(fldInches);
 		
 		btnLengthConvert = new JButton("Convert");
+		btnLengthConvert.setMnemonic('C');
 		btnLengthConvert.setBounds(20, 73, 104, 23);
 		btnLengthConvert.addActionListener(btnHandler);
 		jpLengthCalc.add(btnLengthConvert);
 		
 		btnLengthExit = new JButton("Exit");
+		btnLengthExit.setMnemonic('X');
 		btnLengthExit.setBounds(134, 73, 66, 23);
 		btnLengthExit.addActionListener(btnHandler);
 		jpLengthCalc.add(btnLengthExit);
 		
 		btnLengthClear = new JButton("Clear");
+		btnLengthClear.setMnemonic('L');
 		btnLengthClear.setBounds(208, 73, 96, 23);
 		btnLengthClear.addActionListener(btnHandler);
 		jpLengthCalc.add(btnLengthClear);

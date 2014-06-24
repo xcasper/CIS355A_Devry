@@ -1,3 +1,11 @@
+/***********************************************************************
+Program Name: Contractor.java
+Programmer's Name: Craig Gleckman
+Program Description: Generates the 'Add Contractor window for Swimming Pool 
+				Calculator. Allows the user to enter a contractor's information
+				and then saves the information to the file. Also allows the
+				user to delete the contractors file.
+***********************************************************************/
 package Week7;
 
 import java.awt.BorderLayout;
@@ -80,6 +88,7 @@ public class Contractor extends JFrame {
 	            "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD",
 	            "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY" };
 		comboStates = new JComboBox(states);
+		comboStates.addActionListener(btnHandler);
 		comboStates.setBounds(10, 113, 46, 20);
 		contentPane.add(comboStates);
 		
@@ -147,6 +156,13 @@ public class Contractor extends JFrame {
     {
         public void actionPerformed(ActionEvent e) 
         {
+        	//Handles state selection chosen
+        	if(e.getSource() == comboStates)
+        	{
+        		int tempVal = comboStates.getSelectedIndex();
+        		comboStates.setSelectedIndex(tempVal);
+        	}
+        	
         	//Handles add contractor button pressed
         	if(e.getSource() == btnAddContractor)
         	{        		
