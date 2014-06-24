@@ -19,9 +19,11 @@ import javax.swing.JFormattedTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.util.Scanner;
 
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
@@ -619,7 +621,8 @@ public class SwimmingPoolCalculator extends JFrame {
 			
 			if(e.getSource() == btnCustomerAdd)
 			{
-				new Customer();
+				Customer cust = new Customer();
+				cust.run();
 			}
 			
 			if(e.getSource() == btnCustomerExit)
@@ -629,7 +632,22 @@ public class SwimmingPoolCalculator extends JFrame {
 			
 			if(e.getSource() == btnCustomerRefresh)
 			{
-				
+				Scanner sc = null;
+				try 
+				{
+					sc = new Scanner(new File(".\\src\\Week7\\customers.txt"));
+				} 
+				catch (FileNotFoundException ex) 
+				{
+					txtareaCustomerError.setText("Customer's file does not exist. It will be created when you add a customer");
+					ex.printStackTrace();
+				}
+				txtareaCustomerInfo.setText("");
+				while (sc.hasNext()) {
+		            String info = sc.nextLine();
+		            txtareaCustomerInfo.setText(txtareaCustomerInfo.getText() + info + "\n");
+		        }
+				sc.close();
 			}
 		}//end ActionPerformed
 	}//end ButtonHandler
@@ -693,7 +711,6 @@ public class SwimmingPoolCalculator extends JFrame {
 	
 	public void createCustomersTab()
 	{
-		String filename = "customers.txt";
 		jpCustomers = new JPanel();
 		jtabbedPane.addTab("Customers", null, jpCustomers, null);
 		jpCustomers.setLayout(null);
@@ -727,23 +744,15 @@ public class SwimmingPoolCalculator extends JFrame {
 		txtareaCustomerError.setBounds(10, 228, 306, 37);
 		jpCustomers.add(txtareaCustomerError);
 		
-		try
+		String filename = "customers.txt";
+		File custFile = new File(filename);
+		if(custFile.exists())
 		{
-			File custOpen = new File(filename);
-			if(custOpen.exists())
-			{
-				FileReader custAreaIn = new FileReader(custOpen);
-				txtareaCustomerInfo.read(custAreaIn, custOpen.toString());
-				txtareaCustomerError.setText("The file exists and can be read from. Hit Refresh to see current information.");
-			}
-			else
-			{
-				txtareaCustomerError.setText("File " + filename + "does not exist yet! Will be created when you add a customer!");
-			}
+			txtareaCustomerError.setText("The file exists and can be read from. Hit Refresh to see current information.");
 		}
-		catch (IOException ex)
+		else
 		{
-    		txtareaCustomerError.setText("The file could not be read. " + ex.getMessage());
+			txtareaCustomerError.setText("File " + filename + " does not exist yet! Will be created when you add a customer!");
 		}
 	}
 }
