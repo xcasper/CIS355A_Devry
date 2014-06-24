@@ -89,11 +89,29 @@ public class SwimmingPoolCalculator extends JFrame {
 	private JButton btnTempExit;
 	private JLabel lblTempError;
 	private JTextArea txtareaCustomerInfo;
+	private JTextArea txtareaContractorInfo;
 	private JButton btnCustomerExit;
+	private JButton btnContractorsExit;
 	private JButton btnCustomerAdd;
+	private JButton btnContractorsAdd;
 	private JButton btnCustomerRefresh;
+	private JButton btnContractorsRefresh;
 	private JTextArea txtareaCustomerError;
+	private JTextArea txtareaContractorError;
 	private JComboBox boxTempMeasurement;
+	private JTextField txtMillimeteres;
+	private JTextField txtMeters;
+	private JTextField txtYards;
+	private JTextField txtFeet;
+	private JTextField txtInches;
+	private JTextField fldMillimeters;
+	private JTextField fldMeters;
+	private JTextField fldYards;
+	private JTextField fldFeet;
+	private JTextField fldInches;
+	private JButton btnLengthConvert;
+	private JButton btnLengthExit;
+	private JButton btnLengthClear;
 	//private JComponent jcDate;
 	
 	/**
@@ -133,10 +151,10 @@ public class SwimmingPoolCalculator extends JFrame {
 		
 		createCustomersTab();
 		
+		createContractorsTab();
 		
-		
-		jpContractors = new JPanel();
-		jtabbedPane.addTab("Contractors", null, jpContractors, null);
+		//jpContractors = new JPanel();
+		//jtabbedPane.addTab("Contractors", null, jpContractors, null);
 		
 		jpPools = new JPanel();
 		jtabbedPane.addTab("Pools", null, jpPools, null);
@@ -324,6 +342,92 @@ public class SwimmingPoolCalculator extends JFrame {
 		
 		jpLengthCalc = new JPanel();
 		jtabbedPane.addTab("Length Calc", null, jpLengthCalc, null);
+		jpLengthCalc.setLayout(null);
+		
+		txtMillimeteres = new JTextField();
+		txtMillimeteres.setHorizontalAlignment(SwingConstants.CENTER);
+		txtMillimeteres.setEditable(false);
+		txtMillimeteres.setText("Millimeters");
+		txtMillimeteres.setBounds(10, 11, 66, 20);
+		jpLengthCalc.add(txtMillimeteres);
+		txtMillimeteres.setColumns(10);
+		
+		txtMeters = new JTextField();
+		txtMeters.setHorizontalAlignment(SwingConstants.CENTER);
+		txtMeters.setEditable(false);
+		txtMeters.setText("Meters");
+		txtMeters.setBounds(86, 11, 49, 20);
+		jpLengthCalc.add(txtMeters);
+		txtMeters.setColumns(10);
+		
+		txtYards = new JTextField();
+		txtYards.setHorizontalAlignment(SwingConstants.CENTER);
+		txtYards.setEditable(false);
+		txtYards.setText("Yards");
+		txtYards.setBounds(145, 11, 53, 20);
+		jpLengthCalc.add(txtYards);
+		txtYards.setColumns(10);
+		
+		txtFeet = new JTextField();
+		txtFeet.setHorizontalAlignment(SwingConstants.CENTER);
+		txtFeet.setEditable(false);
+		txtFeet.setText("Feet");
+		txtFeet.setBounds(208, 11, 49, 20);
+		jpLengthCalc.add(txtFeet);
+		txtFeet.setColumns(10);
+		
+		txtInches = new JTextField();
+		txtInches.setHorizontalAlignment(SwingConstants.CENTER);
+		txtInches.setEditable(false);
+		txtInches.setText("Inches");
+		txtInches.setBounds(267, 11, 49, 20);
+		jpLengthCalc.add(txtInches);
+		txtInches.setColumns(10);
+		
+		fldMillimeters = new JTextField();
+		fldMillimeters.setHorizontalAlignment(SwingConstants.CENTER);
+		fldMillimeters.setColumns(10);
+		fldMillimeters.setBounds(10, 42, 66, 20);
+		jpLengthCalc.add(fldMillimeters);
+		
+		fldMeters = new JTextField();
+		fldMeters.setHorizontalAlignment(SwingConstants.CENTER);
+		fldMeters.setColumns(10);
+		fldMeters.setBounds(86, 42, 49, 20);
+		jpLengthCalc.add(fldMeters);
+		
+		fldYards = new JTextField();
+		fldYards.setHorizontalAlignment(SwingConstants.CENTER);
+		fldYards.setColumns(10);
+		fldYards.setBounds(145, 42, 53, 20);
+		jpLengthCalc.add(fldYards);
+		
+		fldFeet = new JTextField();
+		fldFeet.setHorizontalAlignment(SwingConstants.CENTER);
+		fldFeet.setColumns(10);
+		fldFeet.setBounds(208, 42, 49, 20);
+		jpLengthCalc.add(fldFeet);
+		
+		fldInches = new JTextField();
+		fldInches.setHorizontalAlignment(SwingConstants.CENTER);
+		fldInches.setColumns(10);
+		fldInches.setBounds(265, 42, 51, 20);
+		jpLengthCalc.add(fldInches);
+		
+		btnLengthConvert = new JButton("Convert");
+		btnLengthConvert.setBounds(20, 73, 104, 23);
+		btnLengthConvert.addActionListener(btnHandler);
+		jpLengthCalc.add(btnLengthConvert);
+		
+		btnLengthExit = new JButton("Exit");
+		btnLengthExit.setBounds(134, 73, 66, 23);
+		btnLengthExit.addActionListener(btnHandler);
+		jpLengthCalc.add(btnLengthExit);
+		
+		btnLengthClear = new JButton("Clear");
+		btnLengthClear.setBounds(208, 73, 96, 23);
+		btnLengthClear.addActionListener(btnHandler);
+		jpLengthCalc.add(btnLengthClear);
 	}
 	
 	class ButtonHandler implements ActionListener
@@ -649,6 +753,228 @@ public class SwimmingPoolCalculator extends JFrame {
 		        }
 				sc.close();
 			}
+			
+			if(e.getSource() == btnContractorsAdd)
+			{
+				Contractor contractor = new Contractor();
+				contractor.run();
+			}
+			
+			if(e.getSource() == btnContractorsExit)
+			{
+				System.exit(0);
+			}
+			
+			if(e.getSource() == btnContractorsRefresh)
+			{
+				Scanner sc = null;
+				try 
+				{
+					sc = new Scanner(new File(".\\src\\Week7\\contractors.txt"));
+				} 
+				catch (FileNotFoundException ex) 
+				{
+					txtareaContractorError.setText("Contractor's file does not exist. It will be created when you add a Contractor");
+					ex.printStackTrace();
+				}
+				txtareaContractorInfo.setText("");
+				while (sc.hasNext()) {
+		            String info = sc.nextLine();
+		            txtareaContractorInfo.setText(txtareaContractorInfo.getText() + info + "\n");
+		        }
+				sc.close();
+			}
+			
+			String tempVal;
+			if(e.getSource() == btnLengthConvert)
+			{
+				String fieldEntered;
+				DecimalFormat formatter = new DecimalFormat("#,###,###.####");
+				
+				tempVal = fldMillimeters.getText();
+				errorExist = ec.NullorEmpty(tempVal);
+				if(!errorExist)
+				{	
+					System.out.println("Millimeters ran");
+					System.out.println(tempVal);
+					errorExist = ec.DoubleParseChecker(tempVal);
+					if(!errorExist)
+					{
+						//All conversions from: http://www.metric-conversions.org/length/
+						double millimeters, meters, yards, feet, inches;
+						
+						millimeters = Double.parseDouble(tempVal);
+						
+						//convert millimeters to meters
+						meters = millimeters/1000.00;
+						fldMeters.setText(""+formatter.format(meters));
+
+						
+						//convert millimeters to yards
+						yards = millimeters * 0.0010936;
+						fldYards.setText(""+formatter.format(yards));
+						
+						//convert millimeters to feet
+						feet = millimeters *  0.0032808;
+						fldFeet.setText(""+formatter.format(feet));
+						
+						//convert millimeters to inches
+						inches = millimeters * 0.039370;
+						fldInches.setText(""+formatter.format(inches));
+					}
+				}
+				else
+				{	
+					tempVal = fldMeters.getText();
+					errorExist = ec.NullorEmpty(tempVal);
+					if(!errorExist)
+					{
+						System.out.println("Meters ran");
+						errorExist = ec.DoubleParseChecker(tempVal);
+						if(!errorExist)
+						{
+							//All conversions from: http://www.metric-conversions.org/length/
+							double millimeters, meters, yards, feet, inches;
+							
+							meters = Double.parseDouble(tempVal);
+							
+							//convert meters to millimeters
+							millimeters = meters / .001;
+							fldMillimeters.setText(""+formatter.format(millimeters));
+							
+							//convert meters to yards
+							yards = meters * 1.0936;
+							fldYards.setText(""+formatter.format(yards));
+							
+							//convert meters to feet
+							feet = meters * 3.2808;
+							fldFeet.setText(""+formatter.format(feet));
+							
+							//convert meters to inches
+							inches = meters * 39.370;
+							fldInches.setText(""+formatter.format(inches));
+						}
+						else
+						{
+							
+						}
+					}
+					else
+					{	
+						tempVal = fldYards.getText();
+						errorExist = ec.NullorEmpty(tempVal);
+						if(!errorExist)
+						{
+							System.out.println("Yards ran");
+							errorExist = ec.DoubleParseChecker(tempVal);
+							if(!errorExist)
+							{
+								//All conversions from: http://www.metric-conversions.org/length/
+								double millimeters, meters, yards, feet, inches;
+								
+								yards = Double.parseDouble(tempVal);
+								
+								//convert yards to millimeters
+								millimeters = yards / 0.0010936;
+								fldMillimeters.setText(""+formatter.format(millimeters));
+								
+								//convert yards to meters
+								meters = yards / 1.0936;
+								fldMeters.setText(""+formatter.format(meters));
+								
+								//convert yard to feet
+								feet = yards * 3.00;
+								fldFeet.setText(""+formatter.format(yards));
+								
+								//convert yards to inches
+								inches = yards * 36.00;
+								fldInches.setText(""+formatter.format(inches));
+							}
+						}
+						else
+						{
+							tempVal = fldFeet.getText();
+							errorExist = ec.NullorEmpty(tempVal);
+							if(!errorExist)
+							{
+								System.out.println("Feet ran");
+								errorExist = ec.DoubleParseChecker(tempVal);
+								if(!errorExist)
+								{
+									//All conversions from: http://www.metric-conversions.org/length/
+									double millimeters, meters, yards, feet, inches;
+									
+									feet = Double.parseDouble(tempVal);
+									
+									//convert feet to millimeters
+									millimeters = feet / 0.0032808;
+									fldMillimeters.setText(""+formatter.format(millimeters));
+									
+									//convert feet to meters
+									meters = feet / 3.2808;
+									fldMeters.setText(""+formatter.format(meters));
+									
+									//convert feet to yards
+									yards = feet * 0.33333;
+									fldYards.setText(""+formatter.format(yards));
+									
+									//convert feet to inches
+									inches = feet * 12.00;
+									fldInches.setText(""+formatter.format(inches));
+								}
+							}
+							else
+							{
+								tempVal = fldInches.getText();
+								errorExist = ec.NullorEmpty(tempVal);
+								if(!errorExist)
+								{
+									System.out.println("Inches ran");
+									errorExist = ec.DoubleParseChecker(tempVal);
+									if(!errorExist)
+									{
+										//All conversions from: http://www.metric-conversions.org/length/
+										double millimeters, meters, yards, feet, inches;
+										
+										inches = Double.parseDouble(tempVal);
+										
+										//convert inches to millimeters
+										millimeters = inches / 0.039370;
+										fldMillimeters.setText(""+formatter.format(millimeters));
+										
+										//convert inches to meters
+										meters = inches / 39.370;
+										fldMeters.setText(""+formatter.format(meters));
+										
+										//convert inches to yards
+										yards = inches * 0.027778;
+										fldYards.setText(""+formatter.format(yards));
+										
+										//convert inches to feet
+										feet = inches * 0.083333;
+										fldFeet.setText(""+formatter.format(feet));
+									}
+								}
+							}
+						}
+					}
+				}
+
+			}
+			
+			if(e.getSource() == btnLengthExit)
+			{
+				System.exit(0);
+			}
+			
+			if(e.getSource() == btnLengthClear)
+			{
+				fldMillimeters.setText("");
+				fldMeters.setText("");
+				fldYards.setText("");
+				fldFeet.setText("");
+				fldInches.setText("");
+			}
 		}//end ActionPerformed
 	}//end ButtonHandler
 	
@@ -716,6 +1042,7 @@ public class SwimmingPoolCalculator extends JFrame {
 		jpCustomers.setLayout(null);
 		
 		txtareaCustomerInfo = new JTextArea();
+		txtareaCustomerInfo.setEditable(false);
 		txtareaCustomerInfo.setLineWrap(true);
 		txtareaCustomerInfo.setText("Select Add Customer to add customers. Select Refresh to refresh this pane.");
 		txtareaCustomerInfo.setBounds(10, 23, 306, 160);
@@ -740,11 +1067,12 @@ public class SwimmingPoolCalculator extends JFrame {
 		jpCustomers.add(btnCustomerRefresh);
 		
 		txtareaCustomerError = new JTextArea();
+		txtareaCustomerError.setEditable(false);
 		txtareaCustomerError.setLineWrap(true);
 		txtareaCustomerError.setBounds(10, 228, 306, 37);
 		jpCustomers.add(txtareaCustomerError);
 		
-		String filename = "customers.txt";
+		String filename = ".\\src\\Week7\\contractors.txt";
 		File custFile = new File(filename);
 		if(custFile.exists())
 		{
@@ -753,6 +1081,55 @@ public class SwimmingPoolCalculator extends JFrame {
 		else
 		{
 			txtareaCustomerError.setText("File " + filename + " does not exist yet! Will be created when you add a customer!");
+		}
+	}
+	
+	public void createContractorsTab()
+	{
+		jpContractors = new JPanel();
+		jtabbedPane.addTab("Contractors", null, jpContractors, null);
+		jpContractors.setLayout(null);
+		
+		txtareaContractorInfo = new JTextArea();
+		txtareaContractorInfo.setEditable(false);
+		txtareaContractorInfo.setLineWrap(true);
+		txtareaContractorInfo.setText("Select Add Contractor to add contractors. Select Refresh to refresh this pane.");
+		txtareaContractorInfo.setBounds(10, 23, 306, 160);
+		jpContractors.add(txtareaContractorInfo);
+	
+		btnContractorsExit = new JButton("Exit");
+		btnContractorsExit.setMnemonic('X');
+		btnContractorsExit.addActionListener(btnHandler);
+		btnContractorsExit.setBounds(10, 194, 89, 23);
+		jpContractors.add(btnContractorsExit);
+		
+		btnContractorsAdd = new JButton("Add Contractor");
+		btnContractorsAdd.setMnemonic('A');
+		btnContractorsAdd.addActionListener(btnHandler);
+		btnContractorsAdd.setBounds(103, 194, 122, 23);
+		jpContractors.add(btnContractorsAdd);
+		
+		btnContractorsRefresh = new JButton("Refresh");
+		btnContractorsRefresh.setMnemonic('R');
+		btnContractorsRefresh.addActionListener(btnHandler);
+		btnContractorsRefresh.setBounds(227, 194, 89, 23);
+		jpContractors.add(btnContractorsRefresh);
+		
+		txtareaContractorError = new JTextArea();
+		txtareaContractorError.setEditable(false);
+		txtareaContractorError.setLineWrap(true);
+		txtareaContractorError.setBounds(10, 228, 306, 37);
+		jpContractors.add(txtareaContractorError);
+		
+		String filename = ".\\src\\Week7\\contractors.txt";
+		File conFile = new File(filename);
+		if(conFile.exists())
+		{
+			txtareaContractorError.setText("The file exists and can be read from. Hit Refresh to see current information.");
+		}
+		else
+		{
+			txtareaContractorError.setText("File " + filename + " does not exist yet! Will be created when you add a contractor!");
 		}
 	}
 }

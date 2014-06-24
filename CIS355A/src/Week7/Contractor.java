@@ -25,17 +25,18 @@ import javax.swing.JTextArea;
 
 import ErrorChecker.ErrorChecker;
 
-public class Customer extends JFrame {
+
+public class Contractor extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField fldCustName;
-	private JTextField fldCustAddr;
-	private JTextField fldCustCity;
-	private JTextField fldCustZip;
-	private JTextField fldCustPhone;
+	private JTextField fldConName;
+	private JTextField fldConAddr;
+	private JTextField fldConCity;
+	private JTextField fldConZip;
+	private JTextField fldConPhone;
 	private JLabel lblNewLabel, lblNewLabel_5, lblNewLabel_2, lblNewLabel_3, lblNewLabel_4;
 	private JComboBox comboStates;
-	private JButton btnAddCustomer, btnClose, btnDeleteFile;
+	private JButton btnAddContractor, btnClose, btnDeleteFile;
 	private JTextArea txtareaCustError;
 	private PrintWriter writer;
 	private ButtonHandler btnHandler = new ButtonHandler();
@@ -47,13 +48,13 @@ public class Customer extends JFrame {
 	 */
 	public void run() {
 		try {
-			Customer frame = new Customer();
+			Contractor frame = new Contractor();
 			frame.setVisible(true);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	public Customer() {
+	public Contractor() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -61,7 +62,7 @@ public class Customer extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		lblNewLabel = new JLabel("Customer Name:");
+		lblNewLabel = new JLabel("Contractor Name:");
 		lblNewLabel.setBounds(10, 11, 115, 14);
 		contentPane.add(lblNewLabel);
 		
@@ -86,40 +87,40 @@ public class Customer extends JFrame {
 		lblNewLabel_3.setBounds(66, 116, 46, 14);
 		contentPane.add(lblNewLabel_3);
 		
-		fldCustName = new JTextField();
-		fldCustName.setBounds(113, 8, 311, 20);
-		contentPane.add(fldCustName);
-		fldCustName.setColumns(10);
+		fldConName = new JTextField();
+		fldConName.setBounds(113, 8, 311, 20);
+		contentPane.add(fldConName);
+		fldConName.setColumns(10);
 		
-		fldCustAddr = new JTextField();
-		fldCustAddr.setBounds(71, 37, 353, 20);
-		contentPane.add(fldCustAddr);
-		fldCustAddr.setColumns(10);
+		fldConAddr = new JTextField();
+		fldConAddr.setBounds(71, 37, 353, 20);
+		contentPane.add(fldConAddr);
+		fldConAddr.setColumns(10);
 		
-		fldCustCity = new JTextField();
-		fldCustCity.setBounds(48, 74, 376, 20);
-		contentPane.add(fldCustCity);
-		fldCustCity.setColumns(10);
+		fldConCity = new JTextField();
+		fldConCity.setBounds(48, 74, 376, 20);
+		contentPane.add(fldConCity);
+		fldConCity.setColumns(10);
 		
-		fldCustZip = new JTextField();
-		fldCustZip.setBounds(95, 113, 86, 20);
-		contentPane.add(fldCustZip);
-		fldCustZip.setColumns(10);
+		fldConZip = new JTextField();
+		fldConZip.setBounds(95, 113, 86, 20);
+		contentPane.add(fldConZip);
+		fldConZip.setColumns(10);
 		
 		lblNewLabel_4 = new JLabel("Phone:");
 		lblNewLabel_4.setBounds(191, 116, 46, 14);
 		contentPane.add(lblNewLabel_4);
 		
-		fldCustPhone = new JTextField();
-		fldCustPhone.setBounds(247, 113, 147, 20);
-		contentPane.add(fldCustPhone);
-		fldCustPhone.setColumns(10);
+		fldConPhone = new JTextField();
+		fldConPhone.setBounds(247, 113, 147, 20);
+		contentPane.add(fldConPhone);
+		fldConPhone.setColumns(10);
 		
-		btnAddCustomer = new JButton("Add Customer");
-		btnAddCustomer.setMnemonic('C');
-		btnAddCustomer.addActionListener(btnHandler);
-		btnAddCustomer.setBounds(58, 150, 132, 23);
-		contentPane.add(btnAddCustomer);
+		btnAddContractor = new JButton("Add Contractor");
+		btnAddContractor.setMnemonic('C');
+		btnAddContractor.addActionListener(btnHandler);
+		btnAddContractor.setBounds(58, 150, 132, 23);
+		contentPane.add(btnAddContractor);
 		
 		btnClose = new JButton("Close");
 		btnClose.setMnemonic('C');
@@ -145,16 +146,16 @@ public class Customer extends JFrame {
     {
         public void actionPerformed(ActionEvent e) 
         {
-        	if(e.getSource() == btnAddCustomer)
+        	if(e.getSource() == btnAddContractor)
         	{        		
         		txtareaCustError.setText("");
-        		String filename = "customer.txt";
+        		String filename = "contractor.txt";
         		String custInfo = null;
-        		File customerFile = new File(filename);
+        		File contractorFile = new File(filename);
         		
         		String custName = null, custAddr = null, custCity = null, custState = null, custZip = null, custPhone = null, tempVal;
         		
-        		tempVal = fldCustName.getText();
+        		tempVal = fldConName.getText();
         		errorExist = ec.NullorEmpty(tempVal);
         		if(!errorExist)
         		{
@@ -163,10 +164,10 @@ public class Customer extends JFrame {
         		else
         		{
         			txtareaCustError.setText("Name Cannot Be Empty");
-        			fldCustName.setBackground(Color.YELLOW);
+        			fldConName.setBackground(Color.YELLOW);
         		}
         		
-        		tempVal = fldCustAddr.getText();
+        		tempVal = fldConAddr.getText();
         		errorExist = ec.NullorEmpty(tempVal);
         		if(!errorExist)
         		{
@@ -175,10 +176,10 @@ public class Customer extends JFrame {
         		else
         		{
         			txtareaCustError.setText("Address Cannot Be Empty");
-        			fldCustAddr.setBackground(Color.YELLOW);
+        			fldConAddr.setBackground(Color.YELLOW);
         		}
         		
-        		tempVal = fldCustCity.getText();
+        		tempVal = fldConCity.getText();
         		errorExist = ec.NullorEmpty(tempVal);
         		if(!errorExist)
         		{
@@ -187,7 +188,7 @@ public class Customer extends JFrame {
         		else
         		{
         			txtareaCustError.setText("City Cannot Be Empty");
-        			fldCustCity.setBackground(Color.YELLOW);
+        			fldConCity.setBackground(Color.YELLOW);
         		}
         		
         		tempVal = (String)comboStates.getSelectedItem();
@@ -202,7 +203,7 @@ public class Customer extends JFrame {
         			
         		}
         		
-        		tempVal = fldCustZip.getText();
+        		tempVal = fldConZip.getText();
         		errorExist = ec.NullorEmpty(tempVal);
         		if(!errorExist)
         		{
@@ -211,10 +212,10 @@ public class Customer extends JFrame {
         		else
         		{
         			txtareaCustError.setText("Zip Cannot Be Empty");
-        			fldCustZip.setBackground(Color.YELLOW);
+        			fldConZip.setBackground(Color.YELLOW);
         		}
         		
-        		tempVal = fldCustPhone.getText();
+        		tempVal = fldConPhone.getText();
         		errorExist = ec.NullorEmpty(tempVal);
         		if(!errorExist)
         		{
@@ -223,27 +224,27 @@ public class Customer extends JFrame {
         		else
         		{
         			txtareaCustError.setText("Phone Cannot Be Empty");
-        			fldCustPhone.setBackground(Color.YELLOW);
+        			fldConPhone.setBackground(Color.YELLOW);
         		}
         		
         		if(txtareaCustError.getText().isEmpty())
         		{
-	        		if(!customerFile.exists())
+	        		if(!contractorFile.exists())
 	        		{
 	        			try 
 	        			{
-	        				writer = new PrintWriter(new FileWriter(".\\src\\Week7\\customers.txt"));
+	        				writer = new PrintWriter(new FileWriter(".\\src\\Week7\\contractors.txt"));
 	        				writer.println("Name: " + custName);
 	        				writer.println("Address: " + custAddr);
 	        				writer.println("City: " + custCity);
 	        				writer.println("State: " + custState);
 	        				writer.println("Zip: " + custZip);
 	        				writer.println("Phone: " + custPhone);
-	        				txtareaCustError.setText("Customer Added");
+	        				txtareaCustError.setText("contractor Added");
 	        			}
 	        			catch(IOException ex)
 	        			{
-	        				txtareaCustError.setText("Adding Customer Failed. Please Try again.");
+	        				txtareaCustError.setText("Adding Contractor Failed. Please Try again.");
 	        			}
 	        			writer.close();
 	        		}
@@ -252,14 +253,14 @@ public class Customer extends JFrame {
 	        			try 
 	        			{
 	        				System.out.println("exists ran");
-	        				writer = new PrintWriter(new FileWriter(".\\src\\Week7\\customers.txt", true));
+	        				writer = new PrintWriter(new FileWriter(".\\src\\Week7\\contractors.txt", true));
 	        				writer.println("Name: " + custName);
 	        				writer.println("Address: " + custAddr);
 	        				writer.println("City: " + custCity);
 	        				writer.println("State: " + custState);
 	        				writer.println("Zip: " + custZip);
 	        				writer.println("Phone: " + custPhone);
-	        				txtareaCustError.setText("Customer Appened To File");
+	        				txtareaCustError.setText("contractor Appened To File");
 	        			}
 	        			catch(IOException ex)
 	        			{
@@ -272,28 +273,28 @@ public class Customer extends JFrame {
         	
         	if(e.getSource() == btnClose)
         	{
-        		fldCustName.setText("");
-        		fldCustAddr.setText("");
-        		fldCustCity.setText("");
+        		fldConName.setText("");
+        		fldConAddr.setText("");
+        		fldConCity.setText("");
         		comboStates.setSelectedIndex(0);
-        		fldCustZip.setText("");
-        		fldCustPhone.setText("");
+        		fldConZip.setText("");
+        		fldConPhone.setText("");
         		dispose();
         	}
         	
         	if(e.getSource() == btnDeleteFile)
         	{
-        		File file = new File(".\\src\\Week7\\customers.txt");
+        		File file = new File(".\\src\\Week7\\contractors.txt");
         		
         		boolean wasDeleted = file.delete();
         		
         		if(wasDeleted)
         		{
-        			txtareaCustError.setText("Customer File Was Deleted Successfully");
+        			txtareaCustError.setText("contractor File Was Deleted Successfully");
         		}
         		else
         		{
-        			txtareaCustError.setText("Error Deleting Customer File. File may not exist, or there may be permission issues.");
+        			txtareaCustError.setText("Error Deleting contractor File. File may not exist, or there may be permission issues.");
         		}
 
         		
